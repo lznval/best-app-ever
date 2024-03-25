@@ -1,10 +1,10 @@
 import ReactDOM from 'react-dom/client';
-import { Main } from './frontend/main';
+// import { Main } from './frontend/main';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <Main />
+  <></>
 );
 
