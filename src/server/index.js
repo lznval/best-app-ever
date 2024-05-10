@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { registerValidation } from "./validations/auth.js";
+import { registerValidation, loginValidation } from "./validation.js";
 
 import checkAuth from "./utils/checkAuth.js";
 
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
   res.send("Hello world!");
 });
 
-app.post("/auth/login", UserController.login);
+app.post("/auth/login", loginValidation, UserController.login);
 
 app.post("/auth/register", registerValidation, UserController.register);
 
