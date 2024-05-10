@@ -1,12 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import cors from "cors";
-import jwt from "jsonwebtoken";
 import { registerValidation } from "./validations/auth.js";
-import { validationResult } from "express-validator";
-import UserModel from "./models/User.js";
-import bcrypt from "bcryptjs";
+
+import checkAuth from "./utils/checkAuth.js";
+
+import * as UserController from "./controllers/UserController.js";
 
 dotenv.config();
 
@@ -28,34 +27,11 @@ app.get("/", (req, res) => {
   res.send("Hello world!");
 });
 
-app.post("/auth/register", registerValidation, async (req, res) => {
-  try {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json(errors.array());
-    }
+app.post("/auth/login", UserController.login);
 
-    const password = req.body.password;
-    const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(password, salt);
+app.post("/auth/register", registerValidation, UserController.register);
 
-    const doc = new UserModel({
-      email: req.body.email,
-      fullName: req.body.fullName,
-      passwordHash,
-      avatarUrl: req.body.avatarUrl,
-    });
-
-    const user = await doc.save();
-
-    res.json(user);
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      message: "Не удалось зарегистрироваться",
-    });
-  }
-});
+app.get("/auth/me", checkAuth, UserController.getMe);
 
 app.listen(PORT, err => {
   if (err) {
