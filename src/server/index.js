@@ -6,6 +6,7 @@ import { registerValidation, loginValidation } from "./validation.js";
 import checkAuth from "./utils/checkAuth.js";
 
 import * as UserController from "./controllers/UserController.js";
+import * as ProductController from "./controllers/ProductController.js";
 
 dotenv.config();
 
@@ -28,10 +29,14 @@ app.get("/", (req, res) => {
 });
 
 app.post("/auth/login", loginValidation, UserController.login);
-
 app.post("/auth/register", registerValidation, UserController.register);
-
 app.get("/auth/me", checkAuth, UserController.getMe);
+
+// app.get("/products", ProductController.getAll);
+// app.get("/products/:id", ProductController.getOne);
+app.post("/products", ProductController.create);
+// app.delete("/products", ProductController.remove);
+// app.patch("/products", ProductController.update);
 
 app.listen(PORT, err => {
   if (err) {
