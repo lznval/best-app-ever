@@ -1,7 +1,11 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { registerValidation, loginValidation } from "./validation.js";
+import {
+  registerValidation,
+  loginValidation,
+  productCreateValidation,
+} from "./validation.js";
 
 import checkAuth from "./utils/checkAuth.js";
 
@@ -32,11 +36,16 @@ app.post("/auth/login", loginValidation, UserController.login);
 app.post("/auth/register", registerValidation, UserController.register);
 app.get("/auth/me", checkAuth, UserController.getMe);
 
-// app.get("/products", ProductController.getAll);
-// app.get("/products/:id", ProductController.getOne);
-app.post("/products", ProductController.create);
-// app.delete("/products", ProductController.remove);
-// app.patch("/products", ProductController.update);
+app.get("/products", ProductController.getAll);
+app.get("/products/:id", ProductController.getOne);
+app.post(
+  "/products",
+  checkAuth,
+  productCreateValidation,
+  ProductController.create
+);
+app.delete("/products/:id", checkAuth, ProductController.remove);
+app.patch("/products/:id", ProductController.update);
 
 app.listen(PORT, err => {
   if (err) {

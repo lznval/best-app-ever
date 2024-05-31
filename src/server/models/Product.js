@@ -1,13 +1,5 @@
 import mongoose from "mongoose";
 
-const ProductTagsSchema = new mongoose.Schema({
-  tag: String,
-});
-
-const ProductPhotosSchema = new mongoose.Schema({
-  photo: String,
-});
-
 const ProductSchema = new mongoose.Schema(
   {
     title: {
@@ -19,12 +11,11 @@ const ProductSchema = new mongoose.Schema(
       required: true,
     },
     tags: {
-      type: [ProductTagsSchema],
+      type: [String],
       required: true,
     },
     photos: {
-      type: [ProductPhotosSchema],
-      required: true,
+      type: [String],
     },
     viewsCount: {
       type: Number,
