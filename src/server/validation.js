@@ -7,6 +7,7 @@ export const registerValidation = [
   }),
   body("fullName", "Укажите имя и фамилию").isLength({ min: 2 }),
   body("avatarUrl", "Неверная ссылка").optional().isURL(),
+  body("role", "Неверная роль").isString(),
 ];
 
 export const loginValidation = [
@@ -21,4 +22,5 @@ export const productCreateValidation = [
   body("text", "Введите описание товара").isLength({ min: 5 }).isString(),
   body("tags", "Неверный формат тегов (укажите массив)").isArray(),
   body("photos", "Неверная ссылка на изображение").isArray(),
+  body("price", "Неверная цена").isNumeric(),
 ];

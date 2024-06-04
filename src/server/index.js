@@ -9,6 +9,7 @@ import {
 } from "./validation.js";
 import { UserController, ProductController } from "./controllers/index.js";
 import { checkAuth, handleValidationErrors } from "./utils/index.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -34,8 +35,8 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
-
 app.use(express.json());
+app.use(cors());
 app.use("/uploads", express.static("uploads"));
 
 app.post(

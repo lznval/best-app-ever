@@ -14,9 +14,7 @@ const ProductSchema = new mongoose.Schema(
       type: [String],
       required: true,
     },
-    photos: {
-      type: [String],
-    },
+    photos: [String],
     viewsCount: {
       type: Number,
       default: 0,
@@ -26,6 +24,11 @@ const ProductSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
+    price: {
+      type: Number,
+      required: true,
+    },
+    rating: Number,
   },
   {
     timestamps: true,

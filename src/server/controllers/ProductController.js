@@ -55,6 +55,7 @@ export const create = async (req, res) => {
       photos: req.body.photos,
       tags: req.body.tags,
       user: req.userId,
+      price: req.body.price,
     });
 
     const product = await doc.save();

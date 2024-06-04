@@ -1,7 +1,5 @@
-@font-face {
-  font-family: Roboto;
-  src: url('./fonts/Roboto-Regular.ttf');
-}
+@import url('variables.scss');
+
 * {
   margin: 0;
   padding: 0;
