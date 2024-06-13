@@ -1,19 +1,24 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useState } from 'react';
 import styles from './CatalogMenu.module.scss';
+import cn from 'classnames';
 
 const CatalogMenu: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const x = 1;
 
   const handleClick = () => {
-    setIsOpen(!isOpen)
-  }
+    setIsOpen(!isOpen);
+  };
   return (
-    <div className={`${styles.menu} ${isOpen ? styles.open : ''}`} onClick={handleClick}>
-        <span></span>
-        <span></span>
-        <span></span>
+    <div
+      className={cn(styles.menu, { [styles.open]: isOpen })}
+      onClick={handleClick}
+    >
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  )
-}
+  );
+};
 
-export default CatalogMenu
+export default CatalogMenu;

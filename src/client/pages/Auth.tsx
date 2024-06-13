@@ -1,8 +1,3 @@
-
-
 export const Auth = () => {
-
-  return (
-    <button>кнопка</button>
-  )
-}
+  return <button>кнопка</button>;
+};

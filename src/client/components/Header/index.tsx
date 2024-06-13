@@ -6,7 +6,9 @@ import { HeartIcon, OrdersIcon, CartIcon } from '@components/Icons';
 export const Header: FC = () => {
   return (
     <header className={styles.wrapper}>
-      <a className={styles.logo} href="/">PoopMarket</a>
+      <a className={styles.logo} href="/">
+        PoopMarket
+      </a>
       <div className={styles.catalog}>
         <CatalogMenu />
         <span>Каталог</span>
@@ -24,6 +26,6 @@ export const Header: FC = () => {
         </div>
       </div>
       <div className={styles.profile}>Профиль</div>
-    </header>    
-  )
-}
+    </header>
+  );
+};
