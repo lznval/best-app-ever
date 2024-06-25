@@ -1,31 +1,46 @@
 import CatalogMenu from '@components/UI/CatalogMenu';
 import styles from './Header.module.scss';
-import { FC } from 'react';
-import { HeartIcon, OrdersIcon, CartIcon } from '@components/Icons';
+import { FC, useRef, useState } from 'react';
+import { HeartIcon, OrdersIcon, CartIcon, UserIcon } from '@components/Icons';
+import { Link } from 'react-router-dom';
+import { Input } from '@components/UI/Input';
+import { useClickOutside } from 'client/utils/hooks';
 
 export const Header: FC = () => {
+
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const catalogRef = useRef<HTMLDivElement>(null);
+
+  const handleClick = () => {
+    setIsOpen(!isOpen);
+  };
+
+  useClickOutside(catalogRef, handleClick);
+  
   return (
     <header className={styles.wrapper}>
-      <a className={styles.logo} href="/">
+      <Link to='/' className={styles.logo}>
         PoopMarket
-      </a>
-      <div className={styles.catalog}>
-        <CatalogMenu />
-        <span>Каталог</span>
+      </Link>
+      <div ref={catalogRef} className={styles.catalog} onClick={handleClick}>
+        <CatalogMenu isOpen={isOpen} />
+        Каталог
       </div>
-      <div className={styles.search}>Поисковик</div>
+      <div className={styles.search}>
+        <Input placeholder='Поиск' />
+      </div>
       <div className={styles.menu}>
-        <div>
-          <HeartIcon />
-        </div>
-        <div>
-          <OrdersIcon />
-        </div>
-        <div>
-          <CartIcon />
+        <HeartIcon />
+        <OrdersIcon />
+        <CartIcon />
+      </div>
+      <div className={styles.profile}>
+        <UserIcon />
+        <div className={styles.profileModal}>
+          <span>Авторизоваться</span>
+          <span>Регистрация</span>
         </div>
       </div>
-      <div className={styles.profile}>Профиль</div>
     </header>
   );
 };

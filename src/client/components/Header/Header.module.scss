@@ -15,4 +15,53 @@
     font-family: $logoFont;
     color: white;
   }
+
+  .catalog {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    color: white;
+    padding: 4px 16px;
+    background-color: rgb(166, 241, 204);
+    border-radius: 16px;
+    transition: all 0.5s ease;;
+    &:hover {
+      background-color: white;
+      color: rgb(96, 141, 119);
+      span {
+        background-color: rgb(96, 141, 119);
+      }
+    }
+  }
+
+  .menu {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  .profile {
+    position: relative;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    .profileModal {
+      position: absolute;
+      bottom: -170%;
+      right: 0;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      gap: 16;
+      box-shadow: 1px 1px 1px 1px rgba($color: #000000, $alpha: 0.4);
+    }
+  }
 }
