@@ -16,26 +16,6 @@
     color: white;
   }
 
-  .catalog {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    font-size: 18px;
-    color: white;
-    padding: 4px 16px;
-    background-color: rgb(166, 241, 204);
-    border-radius: 16px;
-    transition: all 0.5s ease;;
-    &:hover {
-      background-color: white;
-      color: rgb(96, 141, 119);
-      span {
-        background-color: rgb(96, 141, 119);
-      }
-    }
-  }
-
   .menu {
     display: flex;
     gap: 16px;
