@@ -11,7 +11,11 @@ const CatalogMenu: FC = ( ) => {
     setIsOpen(!isOpen);
   };
 
-  useClickOutside(catalogRef, handleClick);
+  const closeCatalog = () => {
+    setIsOpen(false)
+  }
+
+  useClickOutside(catalogRef, closeCatalog);
   return (
     <div className={cn(styles.catalog, { [styles.open]: isOpen } )} ref={catalogRef} onClick={handleClick}>
       <div

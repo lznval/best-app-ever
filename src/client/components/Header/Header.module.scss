@@ -20,7 +20,9 @@
     display: flex;
     gap: 16px;
     align-items: center;
-    cursor: pointer;
+    & > svg{
+      cursor: pointer;
+    }
   }
 
   .profile {
