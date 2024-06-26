@@ -1,56 +1,70 @@
-import CatalogMenu from '@components/UI/CatalogMenu';
+import CatalogMenu from '@components/CatalogMenu';
 import styles from './Header.module.scss';
-import { FC, memo, useRef, useState } from 'react';
+import { FC, useRef, useState } from 'react';
 import { HeartIcon, OrdersIcon, CartIcon, UserIcon } from '@components/Icons';
 import { Link } from 'react-router-dom';
 import { Input } from '@components/UI/Input';
 import { useClickOutside } from 'client/utils/hooks';
+import { ModalAuth } from '@components/ModalAuth';
 
 export const Header: FC = () => {
-
   const [isOpenProfileModal, setIsOpenProfileModal] = useState<boolean>(false);
   const profileModalRef = useRef<HTMLDivElement>(null);
 
   const handleProfileModal = () => {
-    setIsOpenProfileModal(!isOpenProfileModal)
-  }
+    setIsOpenProfileModal(!isOpenProfileModal);
+  };
 
   const closeProfileModal = () => {
-    setIsOpenProfileModal(false)
+    setIsOpenProfileModal(false);
+  };
+
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const handleModalAuth = () => {
+    setShowModal(!showModal);
+  };
+
+  interface IProfileModal {
+    handleModalAuth: () => void;
   }
 
-  useClickOutside(profileModalRef, closeProfileModal)
-
-  const ProfileModal = memo(() => {
-    console.log(1);
+  const ProfileModal: FC<IProfileModal> = ({ handleModalAuth }) => {
     return (
       <div className={styles.profileModal}>
-          <span>Авторизоваться</span>
-          <span>Регистрация</span>
-        </div>
-    )
-  })
+        <h1 onClick={closeProfileModal}>X</h1>
+        <p onClick={handleModalAuth}>Авторизоваться</p>
+        <p>Регистрация</p>
+      </div>
+    );
+  };
 
   return (
     <header className={styles.wrapper}>
-      <Link to='/' className={styles.logo}>
+      <Link to="/" className={styles.logo}>
         PoopMarket
       </Link>
       <div className={styles.catalog}>
         <CatalogMenu />
       </div>
       <div className={styles.search}>
-        <Input placeholder='Поиск' />
+        <Input id="search" placeholder="Поиск" />
       </div>
       <div className={styles.menu}>
         <HeartIcon />
         <OrdersIcon />
         <CartIcon />
       </div>
-      <div className={styles.profile} ref={profileModalRef} onClick={handleProfileModal}>
+      <div
+        className={styles.profile}
+        ref={profileModalRef}
+        onClick={handleProfileModal}
+      >
         <UserIcon />
-        {isOpenProfileModal && <ProfileModal />}
+        {isOpenProfileModal && (
+          <ProfileModal handleModalAuth={handleModalAuth} />
+        )}
       </div>
+      <ModalAuth isShow={showModal} handleModalAuth={handleModalAuth} />
     </header>
   );
 };

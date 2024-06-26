@@ -1,12 +1,44 @@
-import React, { FC } from 'react'
+import React, { FC } from 'react';
 import styles from './Input.module.scss';
 
-type TInputProps = {
-    placeholder?: string
+interface IInputProps {
+  label?: string;
+  type?: string;
+  name?: string;
+  value?: string;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  required?: boolean;
+  id: string;
 }
 
-export const Input: FC<TInputProps> = ({ placeholder }) => {
+export const Input: FC<IInputProps> = ({
+  label,
+  type = 'text',
+  name,
+  value,
+  onChange,
+  placeholder,
+  required = false,
+  id,
+}) => {
   return (
-    <input className={styles.input} type="text" placeholder={placeholder || ''} />
-  )
-}
+    <div className={styles.wrapper}>
+      {label && (
+        <label className={styles.label} htmlFor={id}>
+          {label}
+        </label>
+      )}
+      <input
+        id={id}
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+        required={required}
+        className={styles.input}
+      />
+    </div>
+  );
+};
