@@ -4,8 +4,8 @@ import { FC, useRef, useState } from 'react';
 import { HeartIcon, OrdersIcon, CartIcon, UserIcon } from '@components/Icons';
 import { Link } from 'react-router-dom';
 import { Input } from '@components/UI/Input';
-import { useClickOutside } from 'client/utils/hooks';
 import { ModalAuth } from '@components/ModalAuth';
+import { ModalUser } from '@components/ModalUser';
 
 export const Header: FC = () => {
   const [isOpenProfileModal, setIsOpenProfileModal] = useState<boolean>(false);
@@ -65,6 +65,7 @@ export const Header: FC = () => {
         )}
       </div>
       <ModalAuth isShow={showModal} handleModalAuth={handleModalAuth} />
+      <ModalUser closeModal={handleModalAuth} type='login' />
     </header>
   );
 };

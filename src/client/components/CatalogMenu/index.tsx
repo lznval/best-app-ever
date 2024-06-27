@@ -1,7 +1,6 @@
 import React, { FC, useRef, useState } from 'react';
 import styles from './CatalogMenu.module.scss';
 import cn from 'classnames';
-import { useClickOutside } from 'client/utils/hooks';
 
 const CatalogMenu: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
