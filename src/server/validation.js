@@ -7,7 +7,6 @@ export const registerValidation = [
   }),
   body("fullName", "Укажите имя и фамилию").isLength({ min: 2 }),
   body("avatarUrl", "Неверная ссылка").optional().isURL(),
-  body("role", "Неверная роль").isString(),
 ];
 
 export const loginValidation = [

@@ -1,17 +1,18 @@
 import CatalogMenu from '@components/CatalogMenu';
 import styles from './Header.module.scss';
-import { FC, useRef, useState } from 'react';
+import { FC, useState } from 'react';
 import { HeartIcon, OrdersIcon, CartIcon, UserIcon } from '@components/Icons';
 import { Link } from 'react-router-dom';
 import { Input } from '@components/UI/Input';
-import { ModalAuth } from '@components/ModalAuth';
-import { ModalUser } from '@components/ModalUser';
+import { UserModal } from '@components/UserModal';
+import { ProfileModal } from '@components/ProfileModal';
 
 export const Header: FC = () => {
   const [isOpenProfileModal, setIsOpenProfileModal] = useState<boolean>(false);
-  const profileModalRef = useRef<HTMLDivElement>(null);
+  const [isOpenUserModal, setIsOpenUserModal] = useState<boolean>(false);
+  const [type, setType] = useState<string>('auth');
 
-  const handleProfileModal = () => {
+  const openProfileModal = () => {
     setIsOpenProfileModal(!isOpenProfileModal);
   };
 
@@ -19,24 +20,15 @@ export const Header: FC = () => {
     setIsOpenProfileModal(false);
   };
 
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const handleModalAuth = () => {
-    setShowModal(!showModal);
-  };
-
-  interface IProfileModal {
-    handleModalAuth: () => void;
+  const openUserModal = (value: string) => {
+    setIsOpenUserModal(true)
+    setType(value)
   }
 
-  const ProfileModal: FC<IProfileModal> = ({ handleModalAuth }) => {
-    return (
-      <div className={styles.profileModal}>
-        <h1 onClick={closeProfileModal}>X</h1>
-        <p onClick={handleModalAuth}>Авторизоваться</p>
-        <p>Регистрация</p>
-      </div>
-    );
-  };
+  const closeUserModal = () => {
+    setIsOpenUserModal(false)
+  }
+
 
   return (
     <header className={styles.wrapper}>
@@ -56,16 +48,15 @@ export const Header: FC = () => {
       </div>
       <div
         className={styles.profile}
-        ref={profileModalRef}
-        onClick={handleProfileModal}
+        onClick={openProfileModal}
       >
         <UserIcon />
-        {isOpenProfileModal && (
-          <ProfileModal handleModalAuth={handleModalAuth} />
-        )}
+        <ProfileModal 
+          isOpen={isOpenProfileModal}
+          openUserModal={openUserModal}
+        />
       </div>
-      <ModalAuth isShow={showModal} handleModalAuth={handleModalAuth} />
-      <ModalUser closeModal={handleModalAuth} type='login' />
+      <UserModal isOpen={isOpenUserModal} closeModal={closeUserModal} type={type} />
     </header>
   );
 };
