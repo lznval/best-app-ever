@@ -10,9 +10,6 @@ interface LoginData {
 
 export const AuthForm = () => {
 
-	const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
 	const [data, setData] = useState({});
 
 	const login = async (data: any) => {
@@ -30,8 +27,8 @@ export const AuthForm = () => {
 
 	const handleLogin = async () => {
     try {
-      const items = await login({...data});
-      console.log('Login successful:', items);
+      const user = await login({...data});
+      console.log('Login successful:', user);
     } catch (error) {
       console.error('Login failed:', error);
     }
