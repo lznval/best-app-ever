@@ -8,7 +8,7 @@ import {
   productCreateValidation,
   categoryCreateValidation,
 } from "./validation.js";
-import { UserController, ProductController, CategoriesController, SellerController } from "./controllers/index.js";
+import { UserController, ProductController, CategoriesController, SellerController, OrderController } from "./controllers/index.js";
 import { checkAuth, handleValidationErrors } from "./utils/index.js";
 import cors from "cors";
 
@@ -102,6 +102,10 @@ app.post(
   SellerController.register
 );
 app.get("/seller/me", checkAuth, SellerController.getMe);
+
+//Методы заказов
+app.get("/orders", OrderController.getOrders);
+app.post("/order", OrderController.createOrder);
 
 app.listen(PORT, err => {
   if (err) {

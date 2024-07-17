@@ -2,7 +2,7 @@ import ProductModel from "../models/Product.js";
 
 export const getAll = async (req, res) => {
   try {
-    const products = await ProductModel.find().populate("user").exec();
+    const products = await ProductModel.find().populate("seller").exec();
 
     res.json(products);
   } catch (error) {
@@ -53,8 +53,8 @@ export const create = async (req, res) => {
       title: req.body.title,
       text: req.body.text,
       photos: req.body.photos,
-      categories: req.body.tags,
-      user: req.userId,
+      categories: req.body.categories,
+      seller: req.userId,
       price: req.body.price,
     });
 
