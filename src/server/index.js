@@ -6,8 +6,9 @@ import {
   registerValidation,
   loginValidation,
   productCreateValidation,
+  categoryCreateValidation,
 } from "./validation.js";
-import { UserController, ProductController } from "./controllers/index.js";
+import { UserController, ProductController, CategoriesController, SellerController } from "./controllers/index.js";
 import { checkAuth, handleValidationErrors } from "./utils/index.js";
 import cors from "cors";
 
@@ -39,6 +40,7 @@ app.use(express.json());
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
 
+// Методы для пользователя
 app.post(
   "/auth/login",
   loginValidation,
@@ -53,6 +55,7 @@ app.post(
 );
 app.get("/auth/me", checkAuth, UserController.getMe);
 
+// Методы для товаров
 app.get("/products", ProductController.getAll);
 app.get("/products/:id", ProductController.getOne);
 app.post(
@@ -70,12 +73,35 @@ app.patch(
   handleValidationErrors,
   ProductController.update
 );
-
 app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
   res.json({
     url: `/uploads/${req.file.originalname}`,
   });
 });
+
+// Методы для категорий
+app.get("/categories", CategoriesController.getCategories);
+app.post(
+  "/category",
+  categoryCreateValidation,
+  handleValidationErrors,
+  CategoriesController.createCategories
+);
+
+// Методы для продавца
+app.post(
+  "/seller/login",
+  loginValidation,
+  handleValidationErrors,
+  SellerController.login
+);
+app.post(
+  "/seller/register",
+  registerValidation,
+  handleValidationErrors,
+  SellerController.register
+);
+app.get("/seller/me", checkAuth, SellerController.getMe);
 
 app.listen(PORT, err => {
   if (err) {

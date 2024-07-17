@@ -19,7 +19,11 @@ export const loginValidation = [
 export const productCreateValidation = [
   body("title", "Введите название товара").isLength({ min: 3 }).isString(),
   body("text", "Введите описание товара").isLength({ min: 5 }).isString(),
-  body("tags", "Неверный формат тегов (укажите массив)").isArray(),
+  body("categories", "Неверный формат тегов (укажите массив)").isArray(),
   body("photos", "Неверная ссылка на изображение").isArray(),
   body("price", "Неверная цена").isNumeric(),
 ];
+
+export const categoryCreateValidation = [
+  body("title", "Введите название категории").isLength({ min: 3}).isString()
+]

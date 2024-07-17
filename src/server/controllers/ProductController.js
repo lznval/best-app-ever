@@ -53,7 +53,7 @@ export const create = async (req, res) => {
       title: req.body.title,
       text: req.body.text,
       photos: req.body.photos,
-      tags: req.body.tags,
+      categories: req.body.tags,
       user: req.userId,
       price: req.body.price,
     });
@@ -81,7 +81,7 @@ export const update = async (req, res) => {
         title: req.body.title,
         text: req.body.text,
         photos: req.body.photos,
-        tags: req.body.tags,
+        categories: req.body.tags,
         user: req.userId,
       }
     );

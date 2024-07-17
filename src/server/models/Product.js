@@ -10,7 +10,7 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    tags: {
+    categories: {
       type: [String],
       required: true,
     },
