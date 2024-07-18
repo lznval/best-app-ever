@@ -15,6 +15,7 @@ import {
   SellerController,
   OrderController,
   ReviewController,
+  FavoriteController
 } from './controllers/index.js';
 import { checkAuth, handleValidationErrors } from './utils/index.js';
 import cors from 'cors';
@@ -118,6 +119,11 @@ app.post('/order', OrderController.createOrder);
 app.get('/reviews', ReviewController.getReviews);
 app.post('/review', ReviewController.createReview);
 app.get('/reviews/:id', ReviewController.getReviewsForProduct);
+
+// Методы для избранного
+app.post('/favorites', checkAuth, FavoriteController.addFavorite);
+app.delete('/favorites/:id', checkAuth, FavoriteController.removeFavorite);
+app.get('/favorites', checkAuth, FavoriteController.getFavorites);
 
 app.listen(PORT, (err) => {
   if (err) {
