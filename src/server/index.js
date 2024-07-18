@@ -19,6 +19,7 @@ import {
 } from './controllers/index.js';
 import { checkAuth, handleValidationErrors } from './utils/index.js';
 import cors from 'cors';
+import { userRoutes } from './routes/index.js'
 
 dotenv.config();
 
@@ -48,20 +49,21 @@ app.use(express.json());
 app.use(cors());
 app.use('/uploads', express.static('uploads'));
 
+app.use('/auth', userRoutes);
 // Методы для пользователя
-app.post(
-  '/auth/login',
-  loginValidation,
-  handleValidationErrors,
-  UserController.login,
-);
-app.post(
-  '/auth/register',
-  registerValidation,
-  handleValidationErrors,
-  UserController.register,
-);
-app.get('/auth/me', checkAuth, UserController.getMe);
+// app.post(
+//   '/auth/login',
+//   loginValidation,
+//   handleValidationErrors,
+//   UserController.login,
+// );
+// app.post(
+//   '/auth/register',
+//   registerValidation,
+//   handleValidationErrors,
+//   UserController.register,
+// );
+// app.get('/auth/me', checkAuth, UserController.getMe);
 
 // Методы для товаров
 app.get('/products', ProductController.getAll);
