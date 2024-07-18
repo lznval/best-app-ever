@@ -2,7 +2,14 @@ import ProductModel from "../models/Product.js";
 
 export const getAll = async (req, res) => {
   try {
-    const products = await ProductModel.find().populate("seller").exec();
+    const products = await ProductModel
+      .find()
+      .populate({
+        path: 'seller',
+        model: 'Seller',
+        select: '-passwordHash'
+      })
+      .exec();
 
     res.json(products);
   } catch (error) {
@@ -81,7 +88,7 @@ export const update = async (req, res) => {
         title: req.body.title,
         text: req.body.text,
         photos: req.body.photos,
-        categories: req.body.tags,
+        categories: req.body.categories,
         user: req.userId,
       }
     );

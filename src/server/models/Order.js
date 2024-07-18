@@ -18,9 +18,9 @@ const OrderSchema = new mongoose.Schema(
       },
       seller: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Seller',
         required: true
-      }, // Добавляем поле продавца
+      },
     }],
     totalAmount: {
       type: Number,

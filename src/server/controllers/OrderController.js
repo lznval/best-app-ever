@@ -2,7 +2,20 @@ import OrderModel from "../models/Order.js";
 
 export const getOrders = async (req, res) => {
   try {
-    const orders = await OrderModel.find();
+    const orders = await OrderModel
+      .find()
+      .populate({
+        path: 'user',
+        model: 'User',
+        select: '-passwordHash'
+      }).populate({
+        path: 'products.product',
+        model: 'Product',
+      }).populate({
+        path: 'products.seller',
+        model: 'Seller',
+        select: '-passwordHash'
+      }).exec();
     res.json(orders)
   } catch (error) {
     console.log(error);
@@ -13,13 +26,15 @@ export const getOrders = async (req, res) => {
 };
 
 export const createOrder = async (req, res) => {
+  console.log(req, 'REQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQ');
   try {
     const { products, totalAmount } = req.body;
 
     // Создание нового документа заказа
     const doc = new OrderModel({
-      user: req.userId,
+      user: req.body.user,
       products: products.map(item => ({
+        seller: item.seller,
         product: item.product,
         quantity: item.quantity
       })),
@@ -29,14 +44,8 @@ export const createOrder = async (req, res) => {
     // Сохранение заказа в базе данных
     const order = await doc.save();
 
-    // Заполнение связанных данных о пользователе и продуктах
-    const populatedOrder = await OrderModel.findById(order._id)
-      .populate('user', '-password') // Исключаем пароль из данных пользователя
-      .populate('seller')
-      .exec();
-
     // Возвращаем заполненные данные в ответе
-    res.json(populatedOrder);
+    res.json(order);
   } catch (error) {
     console.log(error);
     res.status(500).json({
@@ -44,3 +53,34 @@ export const createOrder = async (req, res) => {
     });
   }
 };
+
+// export const createOrder = async (req, res) => {
+//   try {
+//     const { user, products, totalAmount } = req.body;
+
+//     // Создайте новый заказ
+//     const order = new OrderModel({
+//       user: user,
+//       products: products.map(item => ({
+//         seller: item.seller,
+//         product: item.product,
+//         quantity: item.quantity
+//       })),
+//       totalAmount: totalAmount,
+//     });
+
+//     // Сохраните заказ в базе данных
+//     const savedOrder = await order.save();
+
+//     // Заполните поля user, products.seller и products.product
+//     const populatedOrder = await order.find().populate('user').exec();
+
+//     // Верните заполненный заказ
+//     res.json(populatedOrder);
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({
+//       message: 'Не удалось создать заказ',
+//     });
+//   }
+// };
