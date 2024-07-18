@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const SellerSchema = new mongoose.Schema(
   {
@@ -17,12 +17,12 @@ const SellerSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: 'seller'
-    }
+      default: 'seller',
+    },
   },
   {
     timestamps: true,
-  }
+  },
 );
 
-export default mongoose.model("Seller", SellerSchema);
+export default mongoose.model('Seller', SellerSchema);

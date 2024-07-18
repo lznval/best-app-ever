@@ -1,6 +1,6 @@
-import jwt from "jsonwebtoken";
-import SellerModel from "../models/Seller.js";
-import bcrypt from "bcryptjs";
+import jwt from 'jsonwebtoken';
+import SellerModel from '../models/Seller.js';
+import bcrypt from 'bcryptjs';
 
 export const register = async (req, res) => {
   try {
@@ -20,10 +20,10 @@ export const register = async (req, res) => {
       {
         _id: user._id,
       },
-      "secret123",
+      'secret123',
       {
-        expiresIn: "30d",
-      }
+        expiresIn: '30d',
+      },
     );
 
     const { passwordHash, ...userData } = user._doc;
@@ -35,7 +35,7 @@ export const register = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось зарегистрироваться",
+      message: 'Не удалось зарегистрироваться',
     });
   }
 };
@@ -48,18 +48,18 @@ export const login = async (req, res) => {
 
     if (!user) {
       return res.status(400).json({
-        message: "Пользователь не найден",
+        message: 'Пользователь не найден',
       });
     }
 
     const isValidPassword = await bcrypt.compare(
       req.body.password,
-      user._doc.passwordHash
+      user._doc.passwordHash,
     );
 
     if (!isValidPassword) {
       return res.status(400).json({
-        message: "Неверный логи или пароль",
+        message: 'Неверный логи или пароль',
       });
     }
 
@@ -67,10 +67,10 @@ export const login = async (req, res) => {
       {
         _id: user._id,
       },
-      "secret123",
+      'secret123',
       {
-        expiresIn: "30d",
-      }
+        expiresIn: '30d',
+      },
     );
 
     const { passwordHash, ...userData } = user._doc;
@@ -82,7 +82,7 @@ export const login = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось авторизоваться",
+      message: 'Не удалось авторизоваться',
     });
   }
 };
@@ -93,7 +93,7 @@ export const getMe = async (req, res) => {
 
     if (!user) {
       return res.status(404).json({
-        message: "Пользователь не найден",
+        message: 'Пользователь не найден',
       });
     }
     const { passwordHash, ...userData } = user._doc;
@@ -104,7 +104,7 @@ export const getMe = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось зарегистрироваться",
+      message: 'Не удалось зарегистрироваться',
     });
   }
 };

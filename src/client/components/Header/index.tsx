@@ -21,14 +21,13 @@ export const Header: FC = () => {
   };
 
   const openUserModal = (value: string) => {
-    setIsOpenUserModal(true)
-    setType(value)
-  }
+    setIsOpenUserModal(true);
+    setType(value);
+  };
 
   const closeUserModal = () => {
-    setIsOpenUserModal(false)
-  }
-
+    setIsOpenUserModal(false);
+  };
 
   return (
     <header className={styles.wrapper}>
@@ -46,17 +45,18 @@ export const Header: FC = () => {
         <OrdersIcon />
         <CartIcon />
       </div>
-      <div
-        className={styles.profile}
-        onClick={openProfileModal}
-      >
+      <div className={styles.profile} onClick={openProfileModal}>
         <UserIcon />
-        <ProfileModal 
+        <ProfileModal
           isOpen={isOpenProfileModal}
           openUserModal={openUserModal}
         />
       </div>
-      <UserModal isOpen={isOpenUserModal} closeModal={closeUserModal} type={type} />
+      <UserModal
+        isOpen={isOpenUserModal}
+        closeModal={closeUserModal}
+        type={type}
+      />
     </header>
   );
 };

@@ -1,13 +1,12 @@
-import ProductModel from "../models/Product.js";
+import ProductModel from '../models/Product.js';
 
 export const getAll = async (req, res) => {
   try {
-    const products = await ProductModel
-      .find()
+    const products = await ProductModel.find()
       .populate({
         path: 'seller',
         model: 'Seller',
-        select: '-passwordHash'
+        select: '-passwordHash',
       })
       .exec();
 
@@ -15,7 +14,7 @@ export const getAll = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось получить товары",
+      message: 'Не удалось получить товары',
     });
   }
 };
@@ -27,14 +26,14 @@ export const getOne = async (req, res) => {
     ProductModel.findOneAndUpdate(
       { _id: productId },
       { $inc: { viewsCount: 1 } },
-      { returnDocument: "after" }
+      { returnDocument: 'after' },
     )
-      .then(doc => res.json(doc))
-      .catch(err => res.status(500).json({ message: "Продукт не найден" }));
+      .then((doc) => res.json(doc))
+      .catch((err) => res.status(500).json({ message: 'Продукт не найден' }));
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось получить товары",
+      message: 'Не удалось получить товары',
     });
   }
 };
@@ -44,12 +43,12 @@ export const remove = async (req, res) => {
     const productId = req.params.id;
 
     ProductModel.findOneAndDelete({ _id: productId })
-      .then(doc => res.json(doc))
-      .catch(err => res.status(500).json({ message: "Продукт не найден" }));
+      .then((doc) => res.json(doc))
+      .catch((err) => res.status(500).json({ message: 'Продукт не найден' }));
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось получить товары",
+      message: 'Не удалось получить товары',
     });
   }
 };
@@ -71,7 +70,7 @@ export const create = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось создать товар",
+      message: 'Не удалось создать товар',
     });
   }
 };
@@ -90,7 +89,7 @@ export const update = async (req, res) => {
         photos: req.body.photos,
         categories: req.body.categories,
         user: req.userId,
-      }
+      },
     );
 
     res.json({
@@ -99,7 +98,7 @@ export const update = async (req, res) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось обновить товар",
+      message: 'Не удалось обновить товар',
     });
   }
 };

@@ -1,16 +1,23 @@
-import express from "express";
-import multer from "multer";
-import mongoose from "mongoose";
-import dotenv from "dotenv";
+import express from 'express';
+import multer from 'multer';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import {
   registerValidation,
   loginValidation,
   productCreateValidation,
   categoryCreateValidation,
-} from "./validation.js";
-import { UserController, ProductController, CategoriesController, SellerController, OrderController, ReviewController } from "./controllers/index.js";
-import { checkAuth, handleValidationErrors } from "./utils/index.js";
-import cors from "cors";
+} from './validation.js';
+import {
+  UserController,
+  ProductController,
+  CategoriesController,
+  SellerController,
+  OrderController,
+  ReviewController,
+} from './controllers/index.js';
+import { checkAuth, handleValidationErrors } from './utils/index.js';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -19,16 +26,16 @@ const USER = process.env.DB_USER;
 const PASSWORD = process.env.DB_PASSWORD;
 mongoose
   .connect(
-    `mongodb+srv://${USER}:${PASSWORD}@cluster0.bcqajau.mongodb.net/market?retryWrites=true&w=majority&appName=Cluster0`
+    `mongodb+srv://${USER}:${PASSWORD}@cluster0.bcqajau.mongodb.net/market?retryWrites=true&w=majority&appName=Cluster0`,
   )
-  .then(() => console.log("DB OK"))
-  .catch(err => console.log("DB error", err));
+  .then(() => console.log('DB OK'))
+  .catch((err) => console.log('DB error', err));
 
 const app = express();
 
 const storage = multer.diskStorage({
   destination: (_, __, cb) => {
-    cb(null, "uploads");
+    cb(null, 'uploads');
   },
   filename: (_, file, cb) => {
     cb(null, file.originalname);
@@ -38,83 +45,83 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 app.use(express.json());
 app.use(cors());
-app.use("/uploads", express.static("uploads"));
+app.use('/uploads', express.static('uploads'));
 
 // Методы для пользователя
 app.post(
-  "/auth/login",
+  '/auth/login',
   loginValidation,
   handleValidationErrors,
-  UserController.login
+  UserController.login,
 );
 app.post(
-  "/auth/register",
+  '/auth/register',
   registerValidation,
   handleValidationErrors,
-  UserController.register
+  UserController.register,
 );
-app.get("/auth/me", checkAuth, UserController.getMe);
+app.get('/auth/me', checkAuth, UserController.getMe);
 
 // Методы для товаров
-app.get("/products", ProductController.getAll);
-app.get("/products/:id", ProductController.getOne);
+app.get('/products', ProductController.getAll);
+app.get('/products/:id', ProductController.getOne);
 app.post(
-  "/products",
+  '/products',
   checkAuth,
   productCreateValidation,
   handleValidationErrors,
-  ProductController.create
+  ProductController.create,
 );
-app.delete("/products/:id", checkAuth, ProductController.remove);
+app.delete('/products/:id', checkAuth, ProductController.remove);
 app.patch(
-  "/products/:id",
+  '/products/:id',
   checkAuth,
   productCreateValidation,
   handleValidationErrors,
-  ProductController.update
+  ProductController.update,
 );
-app.post("/upload", checkAuth, upload.single("image"), (req, res) => {
+app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
   res.json({
     url: `/uploads/${req.file.originalname}`,
   });
 });
 
 // Методы для категорий
-app.get("/categories", CategoriesController.getCategories);
+app.get('/categories', CategoriesController.getCategories);
 app.post(
-  "/category",
+  '/category',
   categoryCreateValidation,
   handleValidationErrors,
-  CategoriesController.createCategories
+  CategoriesController.createCategories,
 );
 
 // Методы для продавца
 app.post(
-  "/seller/login",
+  '/seller/login',
   loginValidation,
   handleValidationErrors,
-  SellerController.login
+  SellerController.login,
 );
 app.post(
-  "/seller/register",
+  '/seller/register',
   registerValidation,
   handleValidationErrors,
-  SellerController.register
+  SellerController.register,
 );
-app.get("/seller/me", checkAuth, SellerController.getMe);
+app.get('/seller/me', checkAuth, SellerController.getMe);
 
 //Методы заказов
-app.get("/orders", OrderController.getOrders);
-app.post("/order", OrderController.createOrder);
+app.get('/orders', OrderController.getOrders);
+app.post('/order', OrderController.createOrder);
 
 // Методы отзывов
-app.get("/reviews", ReviewController.getReviews);
-app.post("/review", ReviewController.createReview);
-app.get("/reviews/:id", ReviewController.getReviewsForProduct);
+app.get('/reviews', ReviewController.getReviews);
+app.post('/review', ReviewController.createReview);
+app.get('/reviews/:id', ReviewController.getReviewsForProduct);
 
-app.listen(PORT, err => {
+app.listen(PORT, (err) => {
   if (err) {
     return console.log(err);
   }
-  console.log("Server OK");
+  console.log('Server OK');
 });

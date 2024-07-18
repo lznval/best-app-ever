@@ -4,19 +4,19 @@ export const getCategories = async (req, res) => {
   try {
     const categories = await CategoriesModel.find();
 
-    res.json(categories)
+    res.json(categories);
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось получить категории",
-    })
+      message: 'Не удалось получить категории',
+    });
   }
-}
+};
 
-export const createCategories = async (req, res ) => {
+export const createCategories = async (req, res) => {
   try {
     const doc = new CategoriesModel({
-      title: req.body.title
+      title: req.body.title,
     });
 
     const category = await doc.save();
@@ -25,7 +25,7 @@ export const createCategories = async (req, res ) => {
   } catch (error) {
     console.log(error);
     res.status(500).json({
-      message: "Не удалось создать категорию",
+      message: 'Не удалось создать категорию',
     });
   }
-}
+};
