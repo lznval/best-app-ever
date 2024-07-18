@@ -26,7 +26,6 @@ export const getOrders = async (req, res) => {
 };
 
 export const createOrder = async (req, res) => {
-  console.log(req, 'REQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQREQ');
   try {
     const { products, totalAmount } = req.body;
 
@@ -53,34 +52,3 @@ export const createOrder = async (req, res) => {
     });
   }
 };
-
-// export const createOrder = async (req, res) => {
-//   try {
-//     const { user, products, totalAmount } = req.body;
-
-//     // Создайте новый заказ
-//     const order = new OrderModel({
-//       user: user,
-//       products: products.map(item => ({
-//         seller: item.seller,
-//         product: item.product,
-//         quantity: item.quantity
-//       })),
-//       totalAmount: totalAmount,
-//     });
-
-//     // Сохраните заказ в базе данных
-//     const savedOrder = await order.save();
-
-//     // Заполните поля user, products.seller и products.product
-//     const populatedOrder = await order.find().populate('user').exec();
-
-//     // Верните заполненный заказ
-//     res.json(populatedOrder);
-//   } catch (error) {
-//     console.log(error);
-//     res.status(500).json({
-//       message: 'Не удалось создать заказ',
-//     });
-//   }
-// };
