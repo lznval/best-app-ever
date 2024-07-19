@@ -1,1 +1,0 @@
-export * as userRoutes from './userRoutes.js'

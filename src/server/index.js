@@ -2,24 +2,15 @@ import express from 'express';
 import multer from 'multer';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import {
-  registerValidation,
-  loginValidation,
-  productCreateValidation,
-  categoryCreateValidation,
-} from './validation.js';
-import {
-  UserController,
-  ProductController,
-  CategoriesController,
-  SellerController,
-  OrderController,
-  ReviewController,
-  FavoriteController
-} from './controllers/index.js';
-import { checkAuth, handleValidationErrors } from './utils/index.js';
+import { checkAuth } from './utils/index.js';
 import cors from 'cors';
-import { userRoutes } from './routes/index.js'
+import userRoutes from './routes/userRoutes.js';
+import productsRoutes from './routes/productsRoutes.js';
+import categoriesRoutes from './routes/categoriesRoutes.js';
+import sellerRoutes from './routes/sellerRoutes.js';
+import ordersRoutes from './routes/ordersRoutes.js';
+import reviewsRoutes from './routes/reviewsRoutes.js';
+import favoritesRoutes from './routes/favoritesRoutes.js';
 
 dotenv.config();
 
@@ -50,82 +41,18 @@ app.use(cors());
 app.use('/uploads', express.static('uploads'));
 
 app.use('/auth', userRoutes);
-// Методы для пользователя
-// app.post(
-//   '/auth/login',
-//   loginValidation,
-//   handleValidationErrors,
-//   UserController.login,
-// );
-// app.post(
-//   '/auth/register',
-//   registerValidation,
-//   handleValidationErrors,
-//   UserController.register,
-// );
-// app.get('/auth/me', checkAuth, UserController.getMe);
+app.use('/products', productsRoutes);
+app.use('/categories', categoriesRoutes);
+app.use('/seller', sellerRoutes);
+app.use('/orders', ordersRoutes);
+app.use('/reviews', reviewsRoutes);
+app.use('/favorites', favoritesRoutes);
 
-// Методы для товаров
-app.get('/products', ProductController.getAll);
-app.get('/products/:id', ProductController.getOne);
-app.post(
-  '/products',
-  checkAuth,
-  productCreateValidation,
-  handleValidationErrors,
-  ProductController.create,
-);
-app.delete('/products/:id', checkAuth, ProductController.remove);
-app.patch(
-  '/products/:id',
-  checkAuth,
-  productCreateValidation,
-  handleValidationErrors,
-  ProductController.update,
-);
 app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
   res.json({
     url: `/uploads/${req.file.originalname}`,
   });
 });
-
-// Методы для категорий
-app.get('/categories', CategoriesController.getCategories);
-app.post(
-  '/category',
-  categoryCreateValidation,
-  handleValidationErrors,
-  CategoriesController.createCategories,
-);
-
-// Методы для продавца
-app.post(
-  '/seller/login',
-  loginValidation,
-  handleValidationErrors,
-  SellerController.login,
-);
-app.post(
-  '/seller/register',
-  registerValidation,
-  handleValidationErrors,
-  SellerController.register,
-);
-app.get('/seller/me', checkAuth, SellerController.getMe);
-
-//Методы заказов
-app.get('/orders', OrderController.getOrders);
-app.post('/order', OrderController.createOrder);
-
-// Методы отзывов
-app.get('/reviews', ReviewController.getReviews);
-app.post('/review', ReviewController.createReview);
-app.get('/reviews/:id', ReviewController.getReviewsForProduct);
-
-// Методы для избранного
-app.post('/favorites', checkAuth, FavoriteController.addFavorite);
-app.delete('/favorites/:id', checkAuth, FavoriteController.removeFavorite);
-app.get('/favorites', checkAuth, FavoriteController.getFavorites);
 
 app.listen(PORT, (err) => {
   if (err) {
