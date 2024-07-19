@@ -8,18 +8,18 @@ import {ProductController} from '../controllers/index.js'
 
 const router = express.Router();
 
-router.get('/products', ProductController.getAll);
-router.get('/products/:id', ProductController.getOne);
+router.get('/', ProductController.getAll);
+router.get('/:id', ProductController.getOne);
 router.post(
-  '/products',
+  '/',
   checkAuth,
   productCreateValidation,
   handleValidationErrors,
   ProductController.create,
 );
-router.delete('/products/:id', checkAuth, ProductController.remove);
+router.delete('/:id', checkAuth, ProductController.remove);
 router.patch(
-  '/products/:id',
+  '/:id',
   checkAuth,
   productCreateValidation,
   handleValidationErrors,
