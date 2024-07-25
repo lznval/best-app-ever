@@ -6,5 +6,6 @@ module.exports = override(
     "@components": path.resolve(__dirname, "src/client/components"),
     "@pages": path.resolve(__dirname, "src/client/pages"),
     "@assets": path.resolve(__dirname, "src/client/assets"),
+    "@redux": path.resolve(__dirname, "src/client/redux"),
   })
 );

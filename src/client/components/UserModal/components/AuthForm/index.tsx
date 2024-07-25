@@ -3,11 +3,6 @@ import styles from './AuthForm.module.scss';
 import { Input } from '@components/UI/Input';
 import api from 'client/api';
 
-interface LoginData {
-  email: string;
-  password: string;
-}
-
 export const AuthForm = () => {
   const [data, setData] = useState({});
 

@@ -19,7 +19,8 @@
     "paths": {
       "@components/*": ["client/components/*"],
       "@pages/*": ["client/pages/*"],
-      "@assets/*": ["client/assets/*"]
+      "@assets/*": ["client/assets/*"],
+      "@redux/*": ["client/redux/*"]
     }
   },
   "include": ["src/**/*"],
