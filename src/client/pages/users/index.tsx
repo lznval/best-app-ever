@@ -43,26 +43,28 @@ export const UsersPage = () => {
       quantity: 20,
     },
   ];
-  const dispatch: AppDispatch = useDispatch()
+  const dispatch: AppDispatch = useDispatch();
   const authStatus = useSelector((state: RootState) => state.auth.status);
   const handleLogin = () => {
-    dispatch(loginUser({
-      email: "anton@test.com",
-      password: "12345"
-    }))
-  }
+    dispatch(
+      loginUser({
+        email: 'anton@test.com',
+        password: '12345',
+      }),
+    );
+  };
   return (
     <>
       <button onClick={handleLogin}>Нажми</button>
 
-<div className="container mx-auto py-8 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-  {mockProducts.map((item, index) => (
-    <ProductCard product={item} key={index} />
-  ))}
-</div>
-{authStatus === 'loading' && <p>Loading...</p>}
-{authStatus === 'error' && <p>Error logging in!</p>}
-{authStatus === 'loaded' && <p>Logged in successfully!</p>}
+      <div className="container mx-auto py-8 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {mockProducts.map((item, index) => (
+          <ProductCard product={item} key={index} />
+        ))}
+      </div>
+      {authStatus === 'loading' && <p>Loading...</p>}
+      {authStatus === 'error' && <p>Error logging in!</p>}
+      {authStatus === 'loaded' && <p>Logged in successfully!</p>}
     </>
   );
 };

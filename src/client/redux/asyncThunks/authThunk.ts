@@ -1,5 +1,5 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import api from "client/api";
+import { createAsyncThunk } from '@reduxjs/toolkit';
+import api from 'client/api';
 
 // Интерфейс для параметров логина
 interface LoginParams {
@@ -20,5 +20,5 @@ export const loginUser = createAsyncThunk<UserData, LoginParams>(
   async (params) => {
     const { data } = await api.post<UserData>('/auth/login', params);
     return data;
-  }
+  },
 );
