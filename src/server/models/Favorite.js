@@ -15,7 +15,7 @@ const FavoriteSchema = new mongoose.Schema(
   },
   {
     timestamps: true,
-  }
+  },
 );
 
 export default mongoose.model('Favorite', FavoriteSchema);

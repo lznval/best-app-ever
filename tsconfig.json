@@ -20,7 +20,8 @@
       "@components/*": ["client/components/*"],
       "@pages/*": ["client/pages/*"],
       "@assets/*": ["client/assets/*"],
-      "@redux/*": ["client/redux/*"]
+      "@redux/*": ["client/redux/*"],
+      "@types": ["client/utils/types.ts"],
     }
   },
   "include": ["src/**/*"],

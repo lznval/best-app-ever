@@ -62,7 +62,7 @@ export const create = async (req, res) => {
       categories: req.body.categories,
       seller: req.userId,
       price: req.body.price,
-      quantity: req.body.quantity
+      quantity: req.body.quantity,
     });
 
     const product = await doc.save();
@@ -90,7 +90,7 @@ export const update = async (req, res) => {
         photos: req.body.photos,
         categories: req.body.categories,
         user: req.userId,
-        quantity: req.body.quantity
+        quantity: req.body.quantity,
       },
     );
 

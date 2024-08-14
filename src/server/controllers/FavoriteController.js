@@ -35,7 +35,9 @@ export const removeFavorite = async (req, res) => {
 // Получить все избранные продукты пользователя
 export const getFavorites = async (req, res) => {
   try {
-    const favorites = await FavoriteModel.find({ user: req.userId }).populate('product').exec();
+    const favorites = await FavoriteModel.find({ user: req.userId })
+      .populate('product')
+      .exec();
     res.json(favorites);
   } catch (error) {
     console.log(error);

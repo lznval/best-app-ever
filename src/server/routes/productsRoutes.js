@@ -1,10 +1,7 @@
 import express from 'express';
-import {
-  checkAuth,
-  handleValidationErrors
-} from '../utils/index.js';
+import { checkAuth, handleValidationErrors } from '../utils/index.js';
 import { productCreateValidation } from '../validation.js';
-import {ProductController} from '../controllers/index.js'
+import { ProductController } from '../controllers/index.js';
 
 const router = express.Router();
 
