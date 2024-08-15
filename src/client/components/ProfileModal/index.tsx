@@ -1,20 +1,20 @@
 import React, { FC } from 'react';
 import styles from './ProfileModal.module.scss';
 import { CloseIcon } from '@components/Icons';
+import { Link } from 'react-router-dom';
 
 interface IProfileModal {
   isOpen: boolean;
-  openUserModal: (value: string) => void;
 }
 
-export const ProfileModal: FC<IProfileModal> = ({ isOpen, openUserModal }) => {
+export const ProfileModal: FC<IProfileModal> = ({ isOpen }) => {
   if (!isOpen) return null;
 
   return (
     <div className={styles.profileModal}>
       <CloseIcon className={styles.icon} />
-      <div onClick={() => openUserModal('auth')}>Авторизоваться</div>
-      <div onClick={() => openUserModal('register')}>Регистрация</div>
+      <Link to='/login'>Авторизоваться</Link>
+      <Link to='/register'>Регистрация</Link>
     </div>
   );
 };

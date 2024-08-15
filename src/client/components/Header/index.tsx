@@ -4,25 +4,14 @@ import { FC, useState } from 'react';
 import { HeartIcon, OrdersIcon, CartIcon, UserIcon } from '@components/Icons';
 import { Link } from 'react-router-dom';
 import { Input } from '@components/UI/Input';
-import { UserModal } from '@components/UserModal';
 import { ProfileModal } from '@components/ProfileModal';
 
 export const Header: FC = () => {
   const [isOpenProfileModal, setIsOpenProfileModal] = useState<boolean>(false);
   const [isOpenUserModal, setIsOpenUserModal] = useState<boolean>(false);
-  const [type, setType] = useState<string>('auth');
 
   const openProfileModal = () => {
     setIsOpenProfileModal(!isOpenProfileModal);
-  };
-
-  const closeProfileModal = () => {
-    setIsOpenProfileModal(false);
-  };
-
-  const openUserModal = (value: string) => {
-    setIsOpenUserModal(true);
-    setType(value);
   };
 
   const closeUserModal = () => {
@@ -49,14 +38,8 @@ export const Header: FC = () => {
         <UserIcon />
         <ProfileModal
           isOpen={isOpenProfileModal}
-          openUserModal={openUserModal}
         />
       </div>
-      <UserModal
-        isOpen={isOpenUserModal}
-        closeModal={closeUserModal}
-        type={type}
-      />
     </header>
   );
 };
