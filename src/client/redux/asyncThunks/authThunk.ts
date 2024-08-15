@@ -1,24 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { IUserLoginData, ILoginParams } from '../types';
 import api from 'client/api';
 
-// Интерфейс для параметров логина
-interface LoginParams {
-  email: string;
-  password: string;
-}
-
-// Интерфейс для ответа от API
-interface UserData {
-  id: string;
-  email: string;
-  token: string;
-  // другие поля, которые возвращает API
-}
-
-export const loginUser = createAsyncThunk<UserData, LoginParams>(
+export const loginUser = createAsyncThunk<IUserLoginData, ILoginParams>(
   'auth/loginUser',
   async (params) => {
-    const { data } = await api.post<UserData>('/auth/login', params);
+    const { data } = await api.post<IUserLoginData>('/auth/login', params);
     return data;
   },
 );

@@ -8,14 +8,8 @@ import { ProfileModal } from '@components/ProfileModal';
 
 export const Header: FC = () => {
   const [isOpenProfileModal, setIsOpenProfileModal] = useState<boolean>(false);
-  const [isOpenUserModal, setIsOpenUserModal] = useState<boolean>(false);
-
   const openProfileModal = () => {
     setIsOpenProfileModal(!isOpenProfileModal);
-  };
-
-  const closeUserModal = () => {
-    setIsOpenUserModal(false);
   };
 
   return (

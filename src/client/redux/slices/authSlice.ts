@@ -1,18 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { loginUser } from '@redux/asyncThunks/authThunk';
-interface UserData {
-  id: string;
-  email: string;
-  token: string;
-  // другие поля, которые возвращает API
-}
-// Интерфейсы для состояния и данных пользователя
-interface AuthState {
-  data: UserData | null;
-  status: 'loading' | 'loaded' | 'error';
-}
+import { IAuthState, IUserLoginData } from '@redux/types';
 
-const initialState: AuthState = {
+const initialState: IAuthState = {
   data: null,
   status: 'loading',
 };
@@ -21,10 +11,9 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    // Дополнительные действия, если нужно (например, logout)
-    logout: (state) => {
+    logoutUser: (state) => {
       state.data = null;
-      state.status = 'error';
+      window.localStorage.removeItem('token');
     },
   },
   extraReducers: (builder) => {
@@ -35,9 +24,10 @@ const authSlice = createSlice({
       })
       .addCase(
         loginUser.fulfilled,
-        (state, action: PayloadAction<UserData>) => {
+        (state, action: PayloadAction<IUserLoginData>) => {
           state.status = 'loaded';
           state.data = action.payload;
+          window.localStorage.setItem('token', state.data.token);
         },
       )
       .addCase(loginUser.rejected, (state) => {
@@ -47,5 +37,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
+export const selectLogin = (state: any) => Boolean(state.auth.data)
+export const stateSelect = (state:any) => state;
+export const { logoutUser } = authSlice.actions;
 export const authReducer = authSlice.reducer;
