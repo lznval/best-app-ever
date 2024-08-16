@@ -9,3 +9,11 @@ export const loginUser = createAsyncThunk<IUserLoginData, ILoginParams>(
     return data;
   },
 );
+
+export const checkLoginUser = createAsyncThunk(
+  'auth/checkLoginUser',
+  async () => {
+    const { data } = await api.get('/auth/me');
+    return data;
+  },
+);

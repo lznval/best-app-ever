@@ -6,8 +6,16 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { LoginPage } from '@pages/usersPages/Login';
 import { RegisterPage } from '@pages/usersPages/Register';
 import { HomePage } from '@pages/usersPages/Home';
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { checkLoginUser } from '@redux/asyncThunks/authThunk';
+import { AppDispatch } from '@redux/store';
 
 export const App = () => {
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(checkLoginUser())
+  }, [])
   return (
     <Router>
       <Routes>

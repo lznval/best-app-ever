@@ -13,8 +13,6 @@ export const ProfileModal: FC<IProfileModal> = ({ isOpen }) => {
   const isLogin = useSelector(selectLogin);
   const state = useSelector(stateSelect);
   if (!isOpen) return null;
-  console.log(state, 'state');
-  console.log(isLogin, 'isLogin');
 
   return (
     <>

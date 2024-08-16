@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loginUser } from '@redux/asyncThunks/authThunk';
+import { loginUser, checkLoginUser } from '@redux/asyncThunks/authThunk';
 import { IAuthState, IUserLoginData } from '@redux/types';
 
 const initialState: IAuthState = {
@@ -18,10 +18,12 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, (state) => {
-        state.status = 'loading';
-        state.data = null;
-      })
+      .addCase(
+        loginUser.pending, (state) => {
+          state.status = 'loading';
+          state.data = null;
+        }
+      )
       .addCase(
         loginUser.fulfilled,
         (state, action: PayloadAction<IUserLoginData>) => {
@@ -31,6 +33,24 @@ const authSlice = createSlice({
         },
       )
       .addCase(loginUser.rejected, (state) => {
+        state.status = 'error';
+        state.data = null;
+      })
+
+      .addCase(
+        checkLoginUser.pending, (state) => {
+          state.status = 'loading';
+          state.data = null;
+        }
+      )
+      .addCase(
+        checkLoginUser.fulfilled,
+        (state, action) => {
+          state.status = 'loaded';
+          state.data = action.payload;
+        },
+      )
+      .addCase(checkLoginUser.rejected, (state) => {
         state.status = 'error';
         state.data = null;
       });
