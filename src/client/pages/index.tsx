@@ -1,6 +1,6 @@
 import { ProductCard } from '@components/ProductCard';
-import { loginUser } from '@redux/asyncThunks/authThunk';
-import { logoutUser } from '@redux/slices/authSlice';
+import { loginUser } from '@redux/asyncThunks/userThunk';
+import { logoutUser } from '@redux/slices/userSlice';
 import { AppDispatch, RootState } from '@redux/store';
 import { IProductCard } from '@types';
 import { useDispatch, useSelector } from 'react-redux';

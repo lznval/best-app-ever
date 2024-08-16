@@ -12,6 +12,12 @@ export interface ILoginParams {
   password: string;
 }
 
+export interface IRegisterParams {
+  email: string;
+  password: string;
+  fullName: string;
+}
+
 export interface IAuthState {
   data: IUserLoginData | null;
   status: 'loading' | 'loaded' | 'error';

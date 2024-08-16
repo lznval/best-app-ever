@@ -1,3 +1,11 @@
+import PageHead from '@components/PageHead';
+import { Register } from '@components/Register';
+
 export const RegisterPage = () => {
-  return <div>RegisterPage</div>;
+  return (
+    <>
+      <PageHead title='Регистрация' />
+      <Register />
+    </>
+  )
 };

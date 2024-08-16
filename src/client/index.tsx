@@ -8,7 +8,7 @@ import { RegisterPage } from '@pages/usersPages/Register';
 import { HomePage } from '@pages/usersPages/Home';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { checkLoginUser } from '@redux/asyncThunks/authThunk';
+import { checkLoginUser } from '@redux/asyncThunks/userThunk';
 import { AppDispatch } from '@redux/store';
 
 export const App = () => {

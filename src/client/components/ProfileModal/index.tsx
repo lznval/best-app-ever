@@ -3,7 +3,7 @@ import styles from './ProfileModal.module.scss';
 import { CloseIcon } from '@components/Icons';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser, selectLogin, stateSelect } from '@redux/slices/authSlice';
+import { logoutUser, isAuth, stateSelect } from '@redux/slices/userSlice';
 import { AppDispatch } from '@redux/store';
 
 interface IProfileModal {
@@ -11,7 +11,7 @@ interface IProfileModal {
 }
 
 export const ProfileModal: FC<IProfileModal> = ({ isOpen }) => {
-  const isLogin = useSelector(selectLogin);
+  const isLogin = useSelector(isAuth);
   const state = useSelector(stateSelect);
   const dispatch = useDispatch<AppDispatch>();
 
@@ -25,7 +25,7 @@ export const ProfileModal: FC<IProfileModal> = ({ isOpen }) => {
       {isLogin ? (
         <div className={styles.profileModal}>
           <CloseIcon className={styles.icon} />
-          <p>{state.auth.data.fullName}</p>
+          <p>{state.auth.data?.fullName}</p>
           <p onClick={handleLogout}>Выйти</p>
         </div>
       ) : (
