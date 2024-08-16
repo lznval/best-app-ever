@@ -12,7 +12,7 @@ interface IInputProps {
   required?: boolean;
   id: string;
   className?: string;
-  defaultValue?: string
+  defaultValue?: string;
 }
 
 export const Input: FC<IInputProps> = ({
@@ -25,7 +25,7 @@ export const Input: FC<IInputProps> = ({
   required = false,
   id,
   className,
-  defaultValue
+  defaultValue,
 }) => {
   return (
     <div className={styles.wrapper}>

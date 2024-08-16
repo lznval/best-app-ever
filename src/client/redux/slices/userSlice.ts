@@ -1,5 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { loginUser, checkLoginUser, registerUser } from '@redux/asyncThunks/userThunk';
+import {
+  loginUser,
+  checkLoginUser,
+  registerUser,
+} from '@redux/asyncThunks/userThunk';
 import { IAuthState, IUserLoginData } from '@redux/types';
 import { RootState } from '@redux/store';
 
@@ -36,7 +40,7 @@ const userSlice = createSlice({
         state.status = 'error';
         state.data = null;
       })
-    // Check login slice
+      // Check login slice
       .addCase(checkLoginUser.pending, (state) => {
         state.status = 'loading';
         state.data = null;
@@ -50,19 +54,19 @@ const userSlice = createSlice({
         state.data = null;
       })
 
-    // Register slice
-    .addCase(registerUser.pending, (state) => {
-      state.status = 'loading';
-      state.data = null;
-    })
-    .addCase(registerUser.fulfilled, (state, action) => {
-      state.status = 'loaded';
-      state.data = action.payload;
-    })
-    .addCase(registerUser.rejected, (state) => {
-      state.status = 'error';
-      state.data = null;
-    })
+      // Register slice
+      .addCase(registerUser.pending, (state) => {
+        state.status = 'loading';
+        state.data = null;
+      })
+      .addCase(registerUser.fulfilled, (state, action) => {
+        state.status = 'loaded';
+        state.data = action.payload;
+      })
+      .addCase(registerUser.rejected, (state) => {
+        state.status = 'error';
+        state.data = null;
+      });
   },
 });
 

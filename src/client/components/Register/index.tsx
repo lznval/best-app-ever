@@ -16,12 +16,11 @@ interface IRegisterData {
 
 export const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const [data, setData] = useState<IRegisterData>(
-    {
-      email: 'lizunov@test.ru',
-      password: '12345', 
-      fullName: 'Александр Лизунов'}
-  );
+  const [data, setData] = useState<IRegisterData>({
+    email: 'lizunov@test.ru',
+    password: '12345',
+    fullName: 'Александр Лизунов',
+  });
   const [passwordRepeat, setPasswordRepeat] = useState('');
 
   const authStatus = useSelector(isAuth);
@@ -44,7 +43,7 @@ export const Register = () => {
       console.log(data);
       dispatch(registerUser(data));
     } else {
-      alert('Пароли не совпадают!')
+      alert('Пароли не совпадают!');
     }
   };
 
@@ -57,7 +56,7 @@ export const Register = () => {
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm">
         <h2 className="text-2xl font-bold mb-6 text-center">Войти</h2>
         <div>
-        <div className="mb-4">
+          <div className="mb-4">
             <Input
               id="fullname-register"
               label="Имя и фамилия"
@@ -65,7 +64,7 @@ export const Register = () => {
               placeholder="Введите ваше имя и фамилию"
               type="text"
               onChange={(e) => handleChangeInput(e, 'fullName')}
-              defaultValue='Александр Лизунов'
+              defaultValue="Александр Лизунов"
             />
           </div>
           <div className="mb-4">
@@ -76,7 +75,7 @@ export const Register = () => {
               placeholder="Введите почту"
               type="email"
               onChange={(e) => handleChangeInput(e, 'email')}
-              defaultValue='lizunov@test.ru'
+              defaultValue="lizunov@test.ru"
             />
           </div>
           <div className="mb-6 relative">
@@ -87,7 +86,7 @@ export const Register = () => {
               placeholder="Введите пароль"
               type={showPassword ? 'text' : 'password'}
               onChange={(e) => handleChangeInput(e, 'password')}
-              defaultValue='12345'
+              defaultValue="12345"
             />
             <div className={styles.icon} onClick={togglePasswordVisibility}>
               {showPassword ? <CloseEyeIcon /> : <EyeIcon />}
@@ -101,7 +100,7 @@ export const Register = () => {
               placeholder="Повторите пароль"
               type={showPassword ? 'text' : 'password'}
               onChange={(e) => setPasswordRepeat(e.target.value)}
-              defaultValue='12345'
+              defaultValue="12345"
             />
           </div>
           <button

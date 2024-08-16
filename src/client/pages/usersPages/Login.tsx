@@ -4,8 +4,8 @@ import PageHead from '@components/PageHead';
 export const LoginPage = () => {
   return (
     <>
-      <PageHead title='Авторизация' />
+      <PageHead title="Авторизация" />
       <Login />
     </>
-  )
+  );
 };

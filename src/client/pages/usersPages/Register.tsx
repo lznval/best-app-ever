@@ -4,8 +4,8 @@ import { Register } from '@components/Register';
 export const RegisterPage = () => {
   return (
     <>
-      <PageHead title='Регистрация' />
+      <PageHead title="Регистрация" />
       <Register />
     </>
-  )
+  );
 };
