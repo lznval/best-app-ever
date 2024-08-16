@@ -14,16 +14,16 @@ import { AppDispatch } from '@redux/store';
 export const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
-    dispatch(checkLoginUser())
-  }, [])
+    dispatch(checkLoginUser());
+  }, []);
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path='users' element={<UsersPage />} />
-          <Route path='login' element={<LoginPage />} />
-          <Route path='register' element={<RegisterPage />} />
+          <Route path="users" element={<UsersPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="register" element={<RegisterPage />} />
           <Route path="seller" element={<SellerMainPage />} />
         </Route>
       </Routes>

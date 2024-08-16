@@ -12,6 +12,6 @@ const api: AxiosInstance = axios.create({
 api.interceptors.request.use((config) => {
   config.headers.Authorization = window.localStorage.getItem('token');
   return config;
-})
+});
 
 export default api;

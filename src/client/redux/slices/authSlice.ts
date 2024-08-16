@@ -18,12 +18,10 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(
-        loginUser.pending, (state) => {
-          state.status = 'loading';
-          state.data = null;
-        }
-      )
+      .addCase(loginUser.pending, (state) => {
+        state.status = 'loading';
+        state.data = null;
+      })
       .addCase(
         loginUser.fulfilled,
         (state, action: PayloadAction<IUserLoginData>) => {
@@ -37,19 +35,14 @@ const authSlice = createSlice({
         state.data = null;
       })
 
-      .addCase(
-        checkLoginUser.pending, (state) => {
-          state.status = 'loading';
-          state.data = null;
-        }
-      )
-      .addCase(
-        checkLoginUser.fulfilled,
-        (state, action) => {
-          state.status = 'loaded';
-          state.data = action.payload;
-        },
-      )
+      .addCase(checkLoginUser.pending, (state) => {
+        state.status = 'loading';
+        state.data = null;
+      })
+      .addCase(checkLoginUser.fulfilled, (state, action) => {
+        state.status = 'loaded';
+        state.data = action.payload;
+      })
       .addCase(checkLoginUser.rejected, (state) => {
         state.status = 'error';
         state.data = null;
@@ -57,7 +50,7 @@ const authSlice = createSlice({
   },
 });
 
-export const selectLogin = (state: any) => Boolean(state.auth.data)
-export const stateSelect = (state:any) => state;
+export const selectLogin = (state: any) => Boolean(state.auth.data);
+export const stateSelect = (state: any) => state;
 export const { logoutUser } = authSlice.actions;
 export const authReducer = authSlice.reducer;

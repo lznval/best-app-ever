@@ -1,5 +1,5 @@
+import { Login } from '@components/Login';
+
 export const LoginPage = () => {
-  return (
-    <div>LoginPage</div>
-  )
-}
+  return <Login />;
+};

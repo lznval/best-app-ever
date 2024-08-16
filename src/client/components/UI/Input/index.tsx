@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styles from './Input.module.scss';
+import cn from 'classnames';
 
 interface IInputProps {
   label?: string;
@@ -10,6 +11,7 @@ interface IInputProps {
   placeholder?: string;
   required?: boolean;
   id: string;
+  className?: string;
 }
 
 export const Input: FC<IInputProps> = ({
@@ -21,6 +23,7 @@ export const Input: FC<IInputProps> = ({
   placeholder,
   required = false,
   id,
+  className,
 }) => {
   return (
     <div className={styles.wrapper}>
@@ -37,7 +40,7 @@ export const Input: FC<IInputProps> = ({
         onChange={onChange}
         placeholder={placeholder}
         required={required}
-        className={styles.input}
+        className={cn(styles.input, className)}
       />
     </div>
   );

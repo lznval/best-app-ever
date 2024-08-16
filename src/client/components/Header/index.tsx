@@ -30,9 +30,7 @@ export const Header: FC = () => {
       </div>
       <div className={styles.profile} onClick={openProfileModal}>
         <UserIcon />
-        <ProfileModal
-          isOpen={isOpenProfileModal}
-        />
+        <ProfileModal isOpen={isOpenProfileModal} />
       </div>
     </header>
   );

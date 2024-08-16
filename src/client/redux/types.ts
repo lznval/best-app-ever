@@ -1,10 +1,10 @@
-export interface IUserLoginData{
+export interface IUserLoginData {
   _id: string;
   email: string;
   token: string;
   fullName: string;
   createdAt: string;
-  updateAt: string
+  updateAt: string;
 }
 
 export interface ILoginParams {
