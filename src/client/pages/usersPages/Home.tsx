@@ -1,5 +1,10 @@
+import PageHead from "@components/PageHead"
+
 export const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <>
+      <PageHead title='Главная страница' />
+      <div>HomePage</div>
+    </>
   )
 }
