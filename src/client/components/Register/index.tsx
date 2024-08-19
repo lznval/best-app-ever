@@ -4,7 +4,7 @@ import styles from './Register.module.scss';
 import { Input } from '@components/UI/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@redux/store';
-import { registerUser } from '@redux/asyncThunks/userThunk';
+import { loginUser, registerUser } from '@redux/asyncThunks/userThunk';
 import { Navigate } from 'react-router-dom';
 import { isAuth } from '@redux/slices/userSlice';
 
@@ -21,7 +21,7 @@ export const Register = () => {
     password: '12345',
     fullName: 'Александр Лизунов',
   });
-  const [passwordRepeat, setPasswordRepeat] = useState('');
+  const [passwordRepeat, setPasswordRepeat] = useState('12345');
 
   const authStatus = useSelector(isAuth);
   const dispatch = useDispatch<AppDispatch>();
@@ -38,15 +38,13 @@ export const Register = () => {
     });
   };
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     if (data.password === passwordRepeat) {
-      console.log(data);
-      dispatch(registerUser(data));
+      dispatch(registerUser(data))
     } else {
       alert('Пароли не совпадают!');
     }
   };
-
   if (authStatus) {
     return <Navigate to="/" />;
   }
@@ -107,7 +105,7 @@ export const Register = () => {
             className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
             onClick={handleRegister}
           >
-            Войти
+            Зарегистрироваться
           </button>
         </div>
       </div>

@@ -24,7 +24,9 @@ export const Header: FC = () => {
         <Input id="search" placeholder="Поиск" />
       </div>
       <div className={styles.menu}>
-        <HeartIcon />
+        <Link to={'favorites'}>
+          <HeartIcon />
+        </Link>
         <OrdersIcon />
         <CartIcon />
       </div>

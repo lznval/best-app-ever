@@ -62,6 +62,7 @@ const userSlice = createSlice({
       .addCase(registerUser.fulfilled, (state, action) => {
         state.status = 'loaded';
         state.data = action.payload;
+        window.localStorage.setItem('token', state.data.token);
       })
       .addCase(registerUser.rejected, (state) => {
         state.status = 'error';
