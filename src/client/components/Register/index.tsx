@@ -4,7 +4,7 @@ import styles from './Register.module.scss';
 import { Input } from '@components/UI/Input';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@redux/store';
-import { loginUser, registerUser } from '@redux/asyncThunks/userThunk';
+import { registerUser } from '@redux/asyncThunks/userThunk';
 import { Navigate } from 'react-router-dom';
 import { isAuth } from '@redux/slices/userSlice';
 
@@ -54,7 +54,7 @@ export const Register = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm">
-        <h2 className="text-2xl font-bold mb-6 text-center">Войти</h2>
+        <h2 className="text-2xl font-bold mb-6 text-center">Регистрация</h2>
         <div>
           <div className="mb-4">
             <Input
