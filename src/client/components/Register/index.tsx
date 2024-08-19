@@ -39,11 +39,13 @@ export const Register = () => {
   };
 
   const handleRegister = async () => {
-    if (data.password === passwordRepeat) {
-      dispatch(registerUser(data));
-    } else {
+    if (data.password !== passwordRepeat) {
       alert('Пароли не совпадают!');
     }
+    const resp = await dispatch(registerUser(data));
+    if (!resp.payload) {
+      return alert('Не удалось зарегистрироваться! :(')
+    }    
   };
   if (authStatus) {
     return <Navigate to="/" />;
