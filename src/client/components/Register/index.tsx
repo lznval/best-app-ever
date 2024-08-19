@@ -40,7 +40,7 @@ export const Register = () => {
 
   const handleRegister = async () => {
     if (data.password === passwordRepeat) {
-      dispatch(registerUser(data))
+      dispatch(registerUser(data));
     } else {
       alert('Пароли не совпадают!');
     }
