@@ -24,12 +24,12 @@ export interface IAuthState {
 }
 
 export interface IProductsData {
-  _id: string,
-  title: string,
-  text: string,
-  categories: string[],
-  photos: string[],
-  viewsCount: number,
+  _id: string;
+  title: string;
+  text: string;
+  categories: string[];
+  photos: string[];
+  viewsCount: number;
   seller: {
     _id: string;
     email: string;
@@ -37,8 +37,8 @@ export interface IProductsData {
     fullName: string;
     createdAt: string;
     updateAt: string;
-  },
-  price: number,
+  };
+  price: number;
   createdAt: string;
   updateAt: string;
 }

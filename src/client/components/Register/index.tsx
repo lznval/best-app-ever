@@ -44,8 +44,8 @@ export const Register = () => {
     }
     const resp = await dispatch(registerUser(data));
     if (!resp.payload) {
-      return alert('Не удалось зарегистрироваться! :(')
-    }    
+      return alert('Не удалось зарегистрироваться! :(');
+    }
   };
   if (authStatus) {
     return <Navigate to="/" />;

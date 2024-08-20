@@ -2,7 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { IUserLoginData, IRegisterParams, IProductsData } from '../types';
 import api from 'client/api';
 
-
 export const getAllProduct = createAsyncThunk<IProductsData[]>(
   'products/getAllProduct',
   async () => {

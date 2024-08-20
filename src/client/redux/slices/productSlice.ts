@@ -1,7 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { IProductState, IProductsData } from '@redux/types';
-import { RootState } from '@redux/store';
 import { getAllProduct } from '@redux/asyncThunks/productThunk';
 
 const initialState: IProductState = {
@@ -25,7 +24,7 @@ const productSlice = createSlice({
         (state, action: PayloadAction<IProductsData[]>) => {
           state.status = 'loaded';
           state.data = action.payload;
-        }
+        },
       )
       .addCase(getAllProduct.rejected, (state) => {
         state.status = 'error';

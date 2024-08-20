@@ -5,12 +5,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 export const Favorites = () => {
-  const { products: { data } } = useSelector((state: RootState) => state);
+  const {
+    products: { data },
+  } = useSelector((state: RootState) => state);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (!data.length) {
-      dispatch(getAllProduct())
+      dispatch(getAllProduct());
     }
   }, []);
 

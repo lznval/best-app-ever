@@ -5,7 +5,7 @@ import styles from './NotAuthBlock.module.scss';
 
 export const NotAuthBlock = () => {
   const authStatus = useSelector(isAuth);
-  
+
   if (authStatus) {
     return null;
   }
