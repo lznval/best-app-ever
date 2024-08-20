@@ -10,7 +10,7 @@ const initialState: IProductState = {
 };
 
 const productSlice = createSlice({
-  name: 'product',
+  name: 'products',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -22,9 +22,9 @@ const productSlice = createSlice({
       })
       .addCase(
         getAllProduct.fulfilled,
-        (state, action: PayloadAction<IProductsData>) => {
+        (state, action: PayloadAction<IProductsData[]>) => {
           state.status = 'loaded';
-          state.data = [action.payload];
+          state.data = action.payload;
         }
       )
       .addCase(getAllProduct.rejected, (state) => {
