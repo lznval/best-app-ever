@@ -39,6 +39,7 @@ export interface IProductsData {
     updateAt: string;
   };
   price: number;
+  quantity: number;
   createdAt: string;
   updateAt: string;
 }
