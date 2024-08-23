@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { checkLoginUser } from '@redux/asyncThunks/userThunk';
 import { AppDispatch } from '@redux/store';
 import { FavoritesPage } from '@pages/usersPages/Favorites';
+import { CartPage } from '@pages/usersPages/Cart';
 
 export const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -27,6 +28,7 @@ export const App = () => {
           <Route path="register" element={<RegisterPage />} />
           <Route path="seller" element={<SellerMainPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="cart" element={<CartPage />} />
         </Route>
       </Routes>
     </Router>

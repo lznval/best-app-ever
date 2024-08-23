@@ -2,6 +2,8 @@ import { FC } from 'react';
 import { IProductsData } from '@types';
 import { Button } from '@components/UI/Button';
 import { Tag } from '@components/UI/Tag';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '@redux/slices/cartSlice';
 
 interface IProductCardProps {
   product: IProductsData;
@@ -11,6 +13,11 @@ export const ProductCard: FC<IProductCardProps> = ({ product }) => {
   const { title, text, categories, photos, viewsCount, price, quantity } =
     product;
 
+    const dispatch = useDispatch();
+
+    const handleAddToCart = () => {
+      dispatch(addItemToCart({ ...product, quantity: 1 }));
+    };
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-xl">
       <div className="relative">
@@ -43,7 +50,7 @@ export const ProductCard: FC<IProductCardProps> = ({ product }) => {
       </div>
       <div className="px-6 py-4 flex justify-between items-center">
         <span className="text-gray-900 font-bold text-xl">{price}₽</span>
-        <Button label="Добавить в корзину" />
+        <Button onClick={handleAddToCart} label="Добавить в корзину" />
       </div>
     </div>
   );

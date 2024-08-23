@@ -8,6 +8,7 @@ import { ProfileModal } from '@components/ProfileModal';
 import { isAuth, logoutUser, stateSelect } from '@redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch } from '@redux/store';
+import { ERoutes } from '@types';
 
 export const Header: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -36,11 +37,13 @@ export const Header: FC = () => {
         <Input id="search" placeholder="Поиск" />
       </div>
       <div className={styles.menu}>
-        <Link to={'favorites'}>
+        <Link to={ERoutes.FAVORITES}>
           <HeartIcon />
         </Link>
         <OrdersIcon />
-        <CartIcon />
+        <Link to={ERoutes.CART}>
+          <CartIcon />
+        </Link>
       </div>
       <div className={styles.profile}>
         <UserIcon onClick={handleOpenModal} />
