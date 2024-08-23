@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 export const Favorites = () => {
   const {
-    products: {data, status},
+    products: { data, status },
   } = useSelector((state: RootState) => state);
   const dispatch = useDispatch<AppDispatch>();
   console.log(status, 'products');

@@ -5,11 +5,23 @@ import { HeartIcon, OrdersIcon, CartIcon, UserIcon } from '@components/Icons';
 import { Link } from 'react-router-dom';
 import { Input } from '@components/UI/Input';
 import { ProfileModal } from '@components/ProfileModal';
+import { isAuth, logoutUser, stateSelect } from '@redux/slices/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '@redux/store';
 
 export const Header: FC = () => {
-  const [isOpenProfileModal, setIsOpenProfileModal] = useState<boolean>(false);
-  const openProfileModal = () => {
-    setIsOpenProfileModal(!isOpenProfileModal);
+  const dispatch = useDispatch<AppDispatch>();
+  const state = useSelector(stateSelect);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isLogin = useSelector(isAuth);
+
+  const handleOpenModal = () => setIsModalOpen(true);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    dispatch(logoutUser());
   };
 
   return (
@@ -30,9 +42,15 @@ export const Header: FC = () => {
         <OrdersIcon />
         <CartIcon />
       </div>
-      <div className={styles.profile} onClick={openProfileModal}>
-        <UserIcon />
-        <ProfileModal isOpen={isOpenProfileModal} />
+      <div className={styles.profile}>
+        <UserIcon onClick={handleOpenModal} />
+        <ProfileModal
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          isAuthenticated={isLogin}
+          userName={state.auth.data?.fullName}
+          onLogout={handleLogout}
+        />
       </div>
     </header>
   );

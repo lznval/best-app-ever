@@ -1,40 +1,59 @@
-import React, { FC } from 'react';
-import styles from './ProfileModal.module.scss';
-import { CloseIcon } from '@components/Icons';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutUser, isAuth, stateSelect } from '@redux/slices/userSlice';
-import { AppDispatch } from '@redux/store';
+import { ERoutes } from '@types';
+import { Button } from '@components/UI/Button';
 
 interface IProfileModal {
   isOpen: boolean;
+  onClose: () => void;
+  isAuthenticated: boolean;
+  userName?: string;
+  onLogout: () => void;
 }
 
-export const ProfileModal: FC<IProfileModal> = ({ isOpen }) => {
-  const isLogin = useSelector(isAuth);
-  const state = useSelector(stateSelect);
-  const dispatch = useDispatch<AppDispatch>();
-
-  const handleLogout = () => {
-    dispatch(logoutUser());
-  };
+export const ProfileModal: FC<IProfileModal> = ({
+  isOpen,
+  onClose,
+  isAuthenticated,
+  userName,
+  onLogout,
+}) => {
   if (!isOpen) return null;
 
   return (
-    <>
-      {isLogin ? (
-        <div className={styles.profileModal}>
-          <CloseIcon className={styles.icon} />
-          <p>{state.auth.data?.fullName}</p>
-          <p onClick={handleLogout}>Выйти</p>
-        </div>
-      ) : (
-        <div className={styles.profileModal}>
-          <CloseIcon className={styles.icon} />
-          <Link to="/login">Авторизоваться</Link>
-          <Link to="/register">Регистрация</Link>
-        </div>
-      )}
-    </>
+    <div className="absolute top-12 right-5 flex justify-center items-center z-50">
+      <div className="bg-white rounded-lg shadow-lg w-80 p-6 relative">
+        <button
+          className="absolute top-2 right-2 text-gray-400 hover:text-gray-600"
+          onClick={onClose}
+        >
+          &times;
+        </button>
+        {!isAuthenticated ? (
+          <div className="text-center">
+            <h2 className="text-xl font-bold mb-4">Вы не авторизованы</h2>
+            <Link to={ERoutes.LOGIN} onClick={onClose}>
+              <Button color="blue" label="Авторизоваться" customStyles="mb-2" />
+            </Link>
+            <Link to={ERoutes.REGISTER} onClick={onClose}>
+              <Button color="green" label="Регистрация" />
+            </Link>
+          </div>
+        ) : (
+          <div className="text-center">
+            <h2 className="text-xl font-bold mb-4">
+              Добро пожаловать, {userName}!
+            </h2>
+            <Button
+              color="red"
+              label="Выйти"
+              onClick={onLogout}
+              customStyles="mb-2"
+            />
+            <Button color="gray" label="Закрыть" onClick={onClose} />
+          </div>
+        )}
+      </div>
+    </div>
   );
 };

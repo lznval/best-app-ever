@@ -1,9 +1,9 @@
-import { FC } from 'react'
+import { FC } from 'react';
 
 interface ITagProps {
   tag: string;
 }
-export const Tag: FC<ITagProps> = ({tag}) => {
+export const Tag: FC<ITagProps> = ({ tag }) => {
   return (
     <span
       key={tag}
@@ -11,5 +11,5 @@ export const Tag: FC<ITagProps> = ({tag}) => {
     >
       #{tag}
     </span>
-  )
-}
+  );
+};

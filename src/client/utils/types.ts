@@ -18,3 +18,9 @@ export interface IProductsData {
   createdAt: string;
   updateAt: string;
 }
+
+export enum ERoutes {
+  MAIN = '/',
+  LOGIN = '/login',
+  REGISTER = '/register',
+}
