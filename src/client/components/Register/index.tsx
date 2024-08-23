@@ -7,6 +7,7 @@ import { AppDispatch } from '@redux/store';
 import { registerUser } from '@redux/asyncThunks/userThunk';
 import { Navigate } from 'react-router-dom';
 import { isAuth } from '@redux/slices/userSlice';
+import { Button } from '@components/UI/Button';
 
 interface IRegisterData {
   email: string;
@@ -103,12 +104,11 @@ export const Register = () => {
               defaultValue="12345"
             />
           </div>
-          <button
-            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
+          <Button 
+            label='Зарегистрироваться'
             onClick={handleRegister}
-          >
-            Зарегистрироваться
-          </button>
+            color='blue'
+          />
         </div>
       </div>
     </div>

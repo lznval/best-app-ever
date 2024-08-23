@@ -2,7 +2,8 @@ import OrderModel from '../models/Order.js';
 
 export const getOrders = async (req, res) => {
   try {
-    const orders = await OrderModel.find()
+    const userId = req.userId;
+    const orders = await OrderModel.find({ user: userId })
       .populate({
         path: 'user',
         model: 'User',
@@ -41,7 +42,6 @@ export const createOrder = async (req, res) => {
       totalAmount,
     });
 
-    // Сохранение заказа в базе данных
     const order = await doc.save();
 
     res.json(order);

@@ -7,6 +7,7 @@ import { AppDispatch } from '@redux/store';
 import { loginUser } from '@redux/asyncThunks/userThunk';
 import { Navigate } from 'react-router-dom';
 import { isAuth } from '@redux/slices/userSlice';
+import { Button } from '@components/UI/Button';
 
 interface ILoginData {
   email: string;
@@ -68,12 +69,11 @@ export const Login = () => {
               {showPassword ? <CloseEyeIcon /> : <EyeIcon />}
             </div>
           </div>
-          <button
-            className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition-colors"
+          <Button 
+            label='Войти'
             onClick={handleLogin}
-          >
-            Войти
-          </button>
+            color='blue'
+          />
         </div>
       </div>
     </div>
