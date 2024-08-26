@@ -27,7 +27,7 @@ export const Header: FC = () => {
 
   return (
     <header className={styles.wrapper}>
-      <Link to="/" className={styles.logo}>
+      <Link to={ERoutes.MAIN} className={styles.logo}>
         PoopMarket
       </Link>
       <div className={styles.catalog}>

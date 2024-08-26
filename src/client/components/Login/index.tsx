@@ -8,6 +8,7 @@ import { loginUser } from '@redux/asyncThunks/userThunk';
 import { Navigate } from 'react-router-dom';
 import { isAuth } from '@redux/slices/userSlice';
 import { Button } from '@components/UI/Button';
+import { ERoutes } from '@types';
 
 interface ILoginData {
   email: string;
@@ -38,7 +39,7 @@ export const Login = () => {
   };
 
   if (authStatus) {
-    return <Navigate to="/" />;
+    return <Navigate to={ERoutes.MAIN} />;
   }
 
   return (
