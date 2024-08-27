@@ -105,10 +105,10 @@ export const Register = () => {
               defaultValue="12345"
             />
           </div>
-          <Button 
-            label='Зарегистрироваться'
+          <Button
+            label="Зарегистрироваться"
             onClick={handleRegister}
-            color='blue'
+            color="blue"
           />
         </div>
       </div>

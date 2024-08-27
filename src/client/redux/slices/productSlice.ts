@@ -29,7 +29,7 @@ const productSlice = createSlice({
       .addCase(getAllProduct.rejected, (state) => {
         state.status = 'error';
         state.data = [];
-      })
+      });
   },
 });
 

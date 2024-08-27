@@ -70,11 +70,7 @@ export const Login = () => {
               {showPassword ? <CloseEyeIcon /> : <EyeIcon />}
             </div>
           </div>
-          <Button 
-            label='Войти'
-            onClick={handleLogin}
-            color='blue'
-          />
+          <Button label="Войти" onClick={handleLogin} color="blue" />
         </div>
       </div>
     </div>

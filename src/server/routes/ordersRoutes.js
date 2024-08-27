@@ -5,6 +5,11 @@ import { checkAuth, handleValidationErrors } from '../utils/index.js';
 const router = express.Router();
 
 router.get('/', checkAuth, handleValidationErrors, OrderController.getOrders);
-router.post('/', checkAuth, handleValidationErrors, OrderController.createOrder);
+router.post(
+  '/',
+  checkAuth,
+  handleValidationErrors,
+  OrderController.createOrder,
+);
 
 export default router;

@@ -13,11 +13,11 @@ export const ProductCard: FC<IProductCardProps> = ({ product }) => {
   const { title, text, categories, photos, viewsCount, price, quantity } =
     product;
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const handleAddToCart = () => {
-      dispatch(addItemToCart({ ...product, quantity: 1 }));
-    };
+  const handleAddToCart = () => {
+    dispatch(addItemToCart({ ...product, quantity: 1 }));
+  };
   return (
     <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-xl">
       <div className="relative">
