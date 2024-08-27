@@ -1,8 +1,8 @@
-import { cartSelect } from "@redux/slices/cartSlice";
+import { state } from "@redux/store";
 import { useSelector } from "react-redux"
 
 export const Cart = () => {
-  const { cart } = useSelector(cartSelect);
+  const { cart } = useSelector(state);
   console.log(cart);
   return (
     <div>

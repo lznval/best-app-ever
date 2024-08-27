@@ -5,14 +5,14 @@ import { HeartIcon, OrdersIcon, CartIcon, UserIcon } from '@components/Icons';
 import { Link } from 'react-router-dom';
 import { Input } from '@components/UI/Input';
 import { ProfileModal } from '@components/ProfileModal';
-import { isAuth, logoutUser, stateSelect } from '@redux/slices/userSlice';
+import { isAuth, logoutUser } from '@redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '@redux/store';
+import { AppDispatch, state } from '@redux/store';
 import { ERoutes } from '@types';
 
 export const Header: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const state = useSelector(stateSelect);
+  const { auth } = useSelector(state);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isLogin = useSelector(isAuth);
 
@@ -51,7 +51,7 @@ export const Header: FC = () => {
           isOpen={isModalOpen}
           onClose={handleCloseModal}
           isAuthenticated={isLogin}
-          userName={state.auth.data?.fullName}
+          userName={auth.data?.fullName}
           onLogout={handleLogout}
         />
       </div>

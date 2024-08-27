@@ -13,8 +13,8 @@ const productSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // Product getAll
     builder
+      // Product getAll
       .addCase(getAllProduct.pending, (state) => {
         state.status = 'loading';
         state.data = [];
@@ -29,7 +29,7 @@ const productSlice = createSlice({
       .addCase(getAllProduct.rejected, (state) => {
         state.status = 'error';
         state.data = [];
-      });
+      })
   },
 });
 
