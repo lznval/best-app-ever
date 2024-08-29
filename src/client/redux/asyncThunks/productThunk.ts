@@ -9,3 +9,11 @@ export const getAllProduct = createAsyncThunk<IProductsData[]>(
     return data;
   },
 );
+
+export const getOneProduct = createAsyncThunk<IProductsData>(
+  'products/getOneProduct',
+  async (id) => {
+    const { data } = await api.get(`/products/${id}`);
+    return data;
+  },
+)

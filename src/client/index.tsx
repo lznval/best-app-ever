@@ -12,6 +12,8 @@ import { checkLoginUser } from '@redux/asyncThunks/userThunk';
 import { AppDispatch } from '@redux/store';
 import { FavoritesPage } from '@pages/usersPages/Favorites';
 import { CartPage } from '@pages/usersPages/Cart';
+import { ProductsPage } from '@pages/usersPages/Products';
+import { ERoutes } from '@types';
 
 export const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -21,15 +23,16 @@ export const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="users" element={<UsersPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="seller" element={<SellerMainPage />} />
-          <Route path="favorites" element={<FavoritesPage />} />
-          <Route path="cart" element={<CartPage />} />
-        </Route>
+      <Route path={ERoutes.MAIN} element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path={ERoutes.USERS} element={<UsersPage />} />
+        <Route path={ERoutes.LOGIN} element={<LoginPage />} />
+        <Route path={ERoutes.REGISTER} element={<RegisterPage />} />
+        <Route path={ERoutes.SELLER} element={<SellerMainPage />} />
+        <Route path={ERoutes.FAVORITES} element={<FavoritesPage />} />
+        <Route path={ERoutes.CART} element={<CartPage />} />
+        <Route path={ERoutes.PRODUCTS} element={<ProductsPage />} />
+      </Route>
       </Routes>
     </Router>
   );

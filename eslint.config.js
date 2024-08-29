@@ -18,7 +18,7 @@ module.exports = {
   plugins: ['react', 'prettier'],
   rules: {
     'no-unused-vars': 'warn', // Предупреждать о неиспользуемых переменных
-    'no-console': 'warn', // Предупреждать об использовании console.log()
+    'no-console': 'error', // Предупреждать об использовании console.log()
     eqeqeq: ['error', 'always'], // Требовать использования === и !==
     'no-var': 'error', // Запрещать использование var
     'prefer-const': 'error', // Предпочитать const для переменных, не изменяемых позже

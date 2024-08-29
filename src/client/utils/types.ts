@@ -25,4 +25,7 @@ export enum ERoutes {
   REGISTER = '/register',
   FAVORITES = '/favorites',
   CART = '/cart',
+  USERS = '/users',
+  SELLER = '/seller',
+  PRODUCTS = '/products',
 }
