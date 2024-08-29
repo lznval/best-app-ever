@@ -33,6 +33,11 @@ export const Header: FC = () => {
       <div className={styles.catalog}>
         <CatalogMenu />
       </div>
+      <div className={styles.catalog}>
+        <Link to={ERoutes.PRODUCTS}>
+          Все товары
+        </Link>
+      </div>
       <div className={styles.search}>
         <Input id="search" placeholder="Поиск" />
       </div>

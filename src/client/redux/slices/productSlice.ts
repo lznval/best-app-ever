@@ -4,7 +4,7 @@ import { IProductState, IProductsData } from '@redux/types';
 import { getAllProduct, getOneProduct } from '@redux/asyncThunks/productThunk';
 
 const initialState: IProductState = {
-  data: [] || {},
+  data: [],
   status: 'loading',
 };
 
@@ -31,21 +31,6 @@ const productSlice = createSlice({
         state.data = [];
       })
       // Product getOne
-      .addCase(getOneProduct.pending, (state) => {
-        state.status = 'loading';
-        state.data = [];
-      })
-      .addCase(
-        getOneProduct.fulfilled,
-        (state, action: PayloadAction<IProductsData>) => {
-          state.status = 'loaded';
-          state.data = action.payload;
-        },
-      )
-      .addCase(getOneProduct.rejected, (state) => {
-        state.status = 'error';
-        state.data = [];
-      })
   },
 });
 

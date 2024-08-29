@@ -29,12 +29,6 @@ export const Favorites = () => {
   return (
     <>
       <NotAuthBlock />
-      <button>Получить товары</button>
-      <div className="container mx-auto py-8 px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {data.map((item) => (
-          <ProductCard product={item} key={item._id} />
-        ))}
-      </div>
     </>
   );
 };

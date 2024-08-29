@@ -13,6 +13,7 @@ import { AppDispatch } from '@redux/store';
 import { FavoritesPage } from '@pages/usersPages/Favorites';
 import { CartPage } from '@pages/usersPages/Cart';
 import { ProductsPage } from '@pages/usersPages/Products';
+import { ProductDetailPage } from '@pages/usersPages/ProductDetail';
 import { ERoutes } from '@types';
 
 export const App = () => {
@@ -32,6 +33,7 @@ export const App = () => {
         <Route path={ERoutes.FAVORITES} element={<FavoritesPage />} />
         <Route path={ERoutes.CART} element={<CartPage />} />
         <Route path={ERoutes.PRODUCTS} element={<ProductsPage />} />
+        <Route path={ERoutes.PRODUCT_DETAIL} element={<ProductDetailPage />} />
       </Route>
       </Routes>
     </Router>

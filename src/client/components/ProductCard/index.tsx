@@ -50,6 +50,8 @@ export const ProductCard: FC<IProductCardProps> = ({ product }) => {
       </div>
       <div className="px-6 py-4 flex justify-between items-center">
         <span className="text-gray-900 font-bold text-xl">{price}₽</span>
+      </div>
+      <div className="px-6 py-4 flex justify-between items-center">
         <Button onClick={handleAddToCart} label="Добавить в корзину" />
       </div>
     </div>

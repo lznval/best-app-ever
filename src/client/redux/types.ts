@@ -45,6 +45,6 @@ export interface IProductsData {
 }
 
 export interface IProductState {
-  data: IProductsData[] | [] | {};
+  data: IProductsData[] | [];
   status: 'loading' | 'loaded' | 'error';
 }

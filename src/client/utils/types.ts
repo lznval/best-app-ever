@@ -28,4 +28,5 @@ export enum ERoutes {
   USERS = '/users',
   SELLER = '/seller',
   PRODUCTS = '/products',
+  PRODUCT_DETAIL = '/product/:id'
 }
