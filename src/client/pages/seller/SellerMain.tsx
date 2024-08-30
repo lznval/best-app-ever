@@ -6,7 +6,6 @@ export const SellerMainPage = () => {
   return (
     <>
       <PageHead title='Админская панель' />
-      <div>Что-то типа сводной инфы</div>
       <SellerAdmin />
     </>
   )

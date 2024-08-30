@@ -71,6 +71,6 @@ const sellerSlice = createSlice({
   },
 });
 
-export const isSellerAuth = (state: RootState) => Boolean(state.auth.data);
+export const isSellerAuth = (state: RootState) => Boolean(state.seller.data);
 export const { logoutSeller } = sellerSlice.actions;
 export const sellerReducer = sellerSlice.reducer;
