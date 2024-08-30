@@ -17,7 +17,7 @@ export interface IProductsData {
   quantity: number;
   createdAt: string;
   updateAt: string;
-  description: string
+  description: string;
 }
 
 export enum ERoutes {
@@ -28,9 +28,9 @@ export enum ERoutes {
   CART = '/cart',
   USERS = '/users',
   PRODUCTS = '/products',
-  PRODUCT_DETAIL = '/product/:id'
+  PRODUCT_DETAIL = '/product/:id',
 }
 
 export enum ERoutesSeller {
-  MAIN = '/seller'
+  MAIN = '/seller',
 }

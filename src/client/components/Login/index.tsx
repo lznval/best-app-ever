@@ -40,7 +40,7 @@ export const Login = () => {
   }
 
   return (
-    <LoginForm 
+    <LoginForm
       showPassword={showPassword}
       togglePasswordVisibility={togglePasswordVisibility}
       handleChangeInput={handleChangeInput}

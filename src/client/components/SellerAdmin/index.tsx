@@ -1,7 +1,6 @@
-
 import { isSellerAuth } from '@redux/slices/sellerSlice';
 import { useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelector } from 'react-redux';
 import { RegisterTabForm } from './components/RegisterTabForm';
 import { AuthTabForm } from './components/AuthTabForm';
 
@@ -10,7 +9,7 @@ const AuthTabs = () => {
 
   const handleTabClick = (tab: 'login' | 'register') => {
     setActiveTab(tab);
-  };  
+  };
 
   return (
     <div className="max-w-md mx-auto p-4 bg-white shadow-lg rounded-lg">
@@ -18,7 +17,9 @@ const AuthTabs = () => {
         <button
           onClick={() => handleTabClick('login')}
           className={`py-2 px-4 rounded-t-lg transition-colors ${
-            activeTab === 'login' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600'
+            activeTab === 'login'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-100 text-gray-600'
           }`}
         >
           Авторизация
@@ -26,7 +27,9 @@ const AuthTabs = () => {
         <button
           onClick={() => handleTabClick('register')}
           className={`py-2 px-4 rounded-t-lg transition-colors ${
-            activeTab === 'register' ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-600'
+            activeTab === 'register'
+              ? 'bg-blue-600 text-white'
+              : 'bg-gray-100 text-gray-600'
           }`}
         >
           Регистрация
@@ -49,15 +52,12 @@ const AuthTabs = () => {
 
 export default AuthTabs;
 
-
 export const SellerAdmin = () => {
   const auth = useSelector(isSellerAuth);
 
   if (!auth) {
-    return <AuthTabs />
+    return <AuthTabs />;
   }
 
-  return (
-    <></>
-  )
-}
+  return <></>;
+};

@@ -23,18 +23,20 @@ export const App = () => {
   return (
     <Router>
       <Routes>
-      <Route path={ERoutes.MAIN} element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route path={ERoutes.LOGIN} element={<LoginPage />} />
-        <Route path={ERoutes.REGISTER} element={<RegisterPage />} />
-        <Route path={ERoutes.FAVORITES} element={<FavoritesPage />} />
-        <Route path={ERoutes.CART} element={<CartPage />} />
-        <Route path={ERoutes.PRODUCTS} element={<ProductsPage />} />
-        <Route path={ERoutes.PRODUCT_DETAIL} element={<ProductDetailPage />} />
-
-        //Дальше страница для продавца
-        <Route path={ERoutesSeller.MAIN} element={<SellerMainPage />} />
-      </Route>
+        <Route path={ERoutes.MAIN} element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path={ERoutes.LOGIN} element={<LoginPage />} />
+          <Route path={ERoutes.REGISTER} element={<RegisterPage />} />
+          <Route path={ERoutes.FAVORITES} element={<FavoritesPage />} />
+          <Route path={ERoutes.CART} element={<CartPage />} />
+          <Route path={ERoutes.PRODUCTS} element={<ProductsPage />} />
+          <Route
+            path={ERoutes.PRODUCT_DETAIL}
+            element={<ProductDetailPage />}
+          />
+          //Дальше страница для продавца
+          <Route path={ERoutesSeller.MAIN} element={<SellerMainPage />} />
+        </Route>
       </Routes>
     </Router>
   );

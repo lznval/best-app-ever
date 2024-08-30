@@ -34,9 +34,7 @@ export const Header: FC = () => {
         <CatalogMenu />
       </div>
       <div className={styles.catalog}>
-        <Link to={ERoutes.PRODUCTS}>
-          Все товары
-        </Link>
+        <Link to={ERoutes.PRODUCTS}>Все товары</Link>
       </div>
       <div className={styles.search}>
         <Input id="search" placeholder="Поиск" />

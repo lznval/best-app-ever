@@ -1,6 +1,6 @@
-import { CloseEyeIcon, EyeIcon } from '@components/Icons'
-import { Button } from '@components/UI/Button'
-import { Input } from '@components/UI/Input'
+import { CloseEyeIcon, EyeIcon } from '@components/Icons';
+import { Button } from '@components/UI/Button';
+import { Input } from '@components/UI/Input';
 import styles from './AuthForm.module.scss';
 import { FC } from 'react';
 
@@ -8,10 +8,15 @@ interface ILoginForm {
   showPassword: boolean;
   togglePasswordVisibility: () => void;
   handleChangeInput: (e: any, name: string) => void;
-  handleLogin: () => void
+  handleLogin: () => void;
 }
 
-export const LoginForm: FC<ILoginForm> = ({ showPassword, togglePasswordVisibility, handleChangeInput, handleLogin }) => {
+export const LoginForm: FC<ILoginForm> = ({
+  showPassword,
+  togglePasswordVisibility,
+  handleChangeInput,
+  handleLogin,
+}) => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm">
@@ -44,5 +49,5 @@ export const LoginForm: FC<ILoginForm> = ({ showPassword, togglePasswordVisibili
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

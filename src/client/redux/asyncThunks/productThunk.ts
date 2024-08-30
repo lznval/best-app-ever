@@ -16,4 +16,4 @@ export const getOneProduct = createAsyncThunk<IProductsData>(
     const { data } = await api.get(`/products/${id}`);
     return data;
   },
-)
+);

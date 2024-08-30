@@ -1,7 +1,7 @@
 import { RegisterForm } from '@components/AuthForm/RegisterForm';
 import { registerSeller } from '@redux/asyncThunks/sellerThunk';
 import { AppDispatch } from '@redux/store';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 interface IRegisterData {
   email: string;
@@ -41,12 +41,12 @@ export const RegisterTabForm = () => {
     }
   };
   return (
-    <RegisterForm 
-              showPassword={showPassword}
-              togglePasswordVisibility={togglePasswordVisibility}
-              handleChangeInput={handleChangeInput}
-              handleRegister={handleRegister}
-              setPasswordRepeat={setPasswordRepeat}
-            />
-  )
-}
+    <RegisterForm
+      showPassword={showPassword}
+      togglePasswordVisibility={togglePasswordVisibility}
+      handleChangeInput={handleChangeInput}
+      handleRegister={handleRegister}
+      setPasswordRepeat={setPasswordRepeat}
+    />
+  );
+};

@@ -51,7 +51,7 @@ export const Register = () => {
   }
 
   return (
-    <RegisterForm 
+    <RegisterForm
       showPassword={showPassword}
       togglePasswordVisibility={togglePasswordVisibility}
       handleChangeInput={handleChangeInput}

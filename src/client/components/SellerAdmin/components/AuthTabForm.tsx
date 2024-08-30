@@ -1,7 +1,7 @@
 import { LoginForm } from '@components/AuthForm/LoginForm';
 import { loginSeller } from '@redux/asyncThunks/sellerThunk';
 import { AppDispatch } from '@redux/store';
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 interface ILoginData {
   email: string;
@@ -29,11 +29,11 @@ export const AuthTabForm = () => {
     dispatch(loginSeller(data));
   };
   return (
-    <LoginForm 
+    <LoginForm
       showPassword={showPassword}
       togglePasswordVisibility={togglePasswordVisibility}
       handleChangeInput={handleChangeInput}
       handleLogin={handleLogin}
     />
-  )
-}
+  );
+};

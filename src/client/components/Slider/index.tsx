@@ -1,4 +1,4 @@
-import Slider from "react-slick";
+import Slider from 'react-slick';
 
 export const SLickSlider = () => {
   const defaultSettings = {
@@ -6,7 +6,7 @@ export const SLickSlider = () => {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
   };
   return (
     <div>
@@ -31,5 +31,5 @@ export const SLickSlider = () => {
         </div>
       </Slider>
     </div>
-  )
-}
+  );
+};

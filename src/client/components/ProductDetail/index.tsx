@@ -1,14 +1,14 @@
-import Loader from "@components/Loader";
-import { SLickSlider } from "@components/Slider";
-import { Button } from "@components/UI/Button";
-import { Tag } from "@components/UI/Tag";
-import { addItemToCart } from "@redux/slices/cartSlice";
-import { AppDispatch } from "@redux/store";
-import { IProductsData } from "@types";
-import api from "client/api";
-import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom";
+import Loader from '@components/Loader';
+import { SLickSlider } from '@components/Slider';
+import { Button } from '@components/UI/Button';
+import { Tag } from '@components/UI/Tag';
+import { addItemToCart } from '@redux/slices/cartSlice';
+import { AppDispatch } from '@redux/store';
+import { IProductsData } from '@types';
+import api from 'client/api';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
 export const ProductDetail = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -18,7 +18,8 @@ export const ProductDetail = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    api.get(`/products/${id}`)
+    api
+      .get(`/products/${id}`)
       .then((res) => {
         setProduct(res.data);
       })
@@ -43,7 +44,16 @@ export const ProductDetail = () => {
     return <div>Товар не найден</div>;
   }
 
-  const { title, text, categories, photos, viewsCount, price, quantity, description } = product;
+  const {
+    title,
+    text,
+    categories,
+    photos,
+    viewsCount,
+    price,
+    quantity,
+    description,
+  } = product;
 
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white">
@@ -79,15 +89,17 @@ export const ProductDetail = () => {
         <div className="lg:w-1/2">
           <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
           <p className="text-lg text-gray-700 mt-4">{text}</p>
-          
+
           <div className="mt-4">
             {categories.map((tag: string) => (
-              <Tag key={tag} tag={tag} customStyles="mr-2 mb-2"/>
+              <Tag key={tag} tag={tag} customStyles="mr-2 mb-2" />
             ))}
           </div>
 
           <div className="mt-6">
-            <span className="text-sm text-gray-500">Просмотры: {viewsCount}</span>
+            <span className="text-sm text-gray-500">
+              Просмотры: {viewsCount}
+            </span>
             <span className="ml-4 text-sm text-gray-500">
               Наличие: {quantity > 0 ? quantity : 'Не указано'}
             </span>
@@ -95,10 +107,10 @@ export const ProductDetail = () => {
 
           <div className="text-4xl font-bold text-gray-900 mt-6">{price}₽</div>
 
-          <Button 
-            onClick={handleAddToCart} 
-            label="Добавить в корзину" 
-            customStyles="mt-6 w-full py-3 text-lg" 
+          <Button
+            onClick={handleAddToCart}
+            label="Добавить в корзину"
+            customStyles="mt-6 w-full py-3 text-lg"
           />
 
           <div className="mt-8">

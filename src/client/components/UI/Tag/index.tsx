@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 interface ITagProps {
   tag: string;
-  customStyles?: string
+  customStyles?: string;
 }
 export const Tag: FC<ITagProps> = ({ tag, customStyles }) => {
   return (

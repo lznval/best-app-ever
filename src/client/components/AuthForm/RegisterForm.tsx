@@ -1,7 +1,7 @@
-import { Button } from '@components/UI/Button'
-import { Input } from '@components/UI/Input'
+import { Button } from '@components/UI/Button';
+import { Input } from '@components/UI/Input';
 import styles from './AuthForm.module.scss';
-import { FC } from 'react'
+import { FC } from 'react';
 import { CloseEyeIcon, EyeIcon } from '@components/Icons';
 
 interface IRegisterForm {
@@ -9,10 +9,16 @@ interface IRegisterForm {
   togglePasswordVisibility: () => void;
   handleChangeInput: (e: any, name: string) => void;
   handleRegister: () => void;
-  setPasswordRepeat: (e: string) => void
+  setPasswordRepeat: (e: string) => void;
 }
 
-export const RegisterForm: FC<IRegisterForm> = ({ showPassword, togglePasswordVisibility, handleChangeInput, handleRegister, setPasswordRepeat }) => {
+export const RegisterForm: FC<IRegisterForm> = ({
+  showPassword,
+  togglePasswordVisibility,
+  handleChangeInput,
+  handleRegister,
+  setPasswordRepeat,
+}) => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-sm">
@@ -73,5 +79,5 @@ export const RegisterForm: FC<IRegisterForm> = ({ showPassword, togglePasswordVi
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

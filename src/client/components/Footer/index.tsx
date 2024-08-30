@@ -1,5 +1,5 @@
-import { ERoutesSeller } from "@types";
-import { Link } from "react-router-dom";
+import { ERoutesSeller } from '@types';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (

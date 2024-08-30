@@ -36,8 +36,8 @@ const ProductSchema = new mongoose.Schema(
     rating: Number,
     description: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   {
     timestamps: true,
