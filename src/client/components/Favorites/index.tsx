@@ -11,7 +11,7 @@ export const Favorites = () => {
     products: { data, status },
   } = useSelector((state: RootState) => state);
   const dispatch = useDispatch<AppDispatch>();
-  console.log(status, 'products');
+
   useEffect(() => {
     if (!data.length) {
       dispatch(getAllProduct());

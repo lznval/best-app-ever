@@ -4,22 +4,25 @@ import { Button } from '@components/UI/Button';
 import { Tag } from '@components/UI/Tag';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '@redux/slices/cartSlice';
+import { Link } from 'react-router-dom';
 
 interface IProductCardProps {
   product: IProductsData;
 }
 
 export const ProductCard: FC<IProductCardProps> = ({ product }) => {
-  const { title, text, categories, photos, viewsCount, price, quantity } =
+  const {_id, title, text, categories, photos, viewsCount, price, quantity } =
     product;
 
   const dispatch = useDispatch();
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e:React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     dispatch(addItemToCart({ ...product, quantity: 1 }));
   };
   return (
-    <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-xl">
+    <Link to={`/product/${_id}`}>
+      <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-xl">
       <div className="relative">
         {photos.map((image: string) => (
           <img
@@ -55,5 +58,6 @@ export const ProductCard: FC<IProductCardProps> = ({ product }) => {
         <Button onClick={handleAddToCart} label="Добавить в корзину" />
       </div>
     </div>
+    </Link>
   );
 };
