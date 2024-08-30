@@ -3,6 +3,9 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RegisterTabForm } from './components/RegisterTabForm';
 import { AuthTabForm } from './components/AuthTabForm';
+import { Link } from 'react-router-dom';
+import { Button } from '@components/UI/Button';
+import { ERoutesSeller } from '@types';
 
 const AuthTabs = () => {
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
@@ -59,5 +62,11 @@ export const SellerAdmin = () => {
     return <AuthTabs />;
   }
 
-  return <></>;
+  return (
+    <>
+      <Link to={ERoutesSeller.CREATE}>
+        <Button label='На страницу создания товара' />
+      </Link>
+    </>
+  );
 };

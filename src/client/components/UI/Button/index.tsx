@@ -1,11 +1,12 @@
 import { colorClasses } from 'client/utils/constants';
-import { FC } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps, FC } from 'react';
 
 interface IButtonProps {
   label: string;
   color?: string;
   customStyles?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  type?: "button" | "submit" | "reset"
 }
 
 export const Button: FC<IButtonProps> = ({
@@ -13,11 +14,13 @@ export const Button: FC<IButtonProps> = ({
   color = 'blue',
   customStyles,
   onClick,
+  type = 'button'
 }) => {
   return (
     <button
       onClick={onClick && onClick}
       className={`${colorClasses[color] || ''} text-white font-bold py-2 px-4 rounded transition w-full ${customStyles || ''} `}
+      type={type}
     >
       {label}
     </button>

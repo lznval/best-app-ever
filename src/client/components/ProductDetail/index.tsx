@@ -52,7 +52,6 @@ export const ProductDetail = () => {
     viewsCount,
     price,
     quantity,
-    description,
   } = product;
 
   return (
@@ -84,8 +83,6 @@ export const ProductDetail = () => {
             </div>
           )}
         </div>
-
-        {/* Product Details */}
         <div className="lg:w-1/2">
           <h1 className="text-3xl font-bold text-gray-900">{title}</h1>
           <p className="text-lg text-gray-700 mt-4">{text}</p>
@@ -95,7 +92,6 @@ export const ProductDetail = () => {
               <Tag key={tag} tag={tag} customStyles="mr-2 mb-2" />
             ))}
           </div>
-
           <div className="mt-6">
             <span className="text-sm text-gray-500">
               Просмотры: {viewsCount}
@@ -104,19 +100,12 @@ export const ProductDetail = () => {
               Наличие: {quantity > 0 ? quantity : 'Не указано'}
             </span>
           </div>
-
           <div className="text-4xl font-bold text-gray-900 mt-6">{price}₽</div>
-
           <Button
             onClick={handleAddToCart}
             label="Добавить в корзину"
             customStyles="mt-6 w-full py-3 text-lg"
           />
-
-          <div className="mt-8">
-            <h3 className="text-lg font-semibold">Описание:</h3>
-            <p className="text-gray-700 text-base mt-2">{description}</p>
-          </div>
         </div>
       </div>
     </div>

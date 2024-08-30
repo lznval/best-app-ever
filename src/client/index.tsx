@@ -14,6 +14,7 @@ import { ProductsPage } from '@pages/usersPages/Products';
 import { ProductDetailPage } from '@pages/usersPages/ProductDetail';
 import { ERoutes, ERoutesSeller } from '@types';
 import { SellerMainPage } from '@pages/seller/SellerMain';
+import { CreateProductPage } from '@pages/seller/CreateProduct';
 
 export const App = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -36,6 +37,7 @@ export const App = () => {
           />
           //Дальше страница для продавца
           <Route path={ERoutesSeller.MAIN} element={<SellerMainPage />} />
+          <Route path={ERoutesSeller.CREATE} element={<CreateProductPage />} />
         </Route>
       </Routes>
     </Router>

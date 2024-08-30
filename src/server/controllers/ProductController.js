@@ -63,7 +63,6 @@ export const create = async (req, res) => {
       seller: req.userId,
       price: req.body.price,
       quantity: req.body.quantity,
-      description: req.body.description,
     });
 
     const product = await doc.save();
