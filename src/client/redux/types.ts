@@ -42,6 +42,7 @@ export interface IProductsData {
   quantity: number;
   createdAt: string;
   updateAt: string;
+  description: string
 }
 
 export interface IProductState {

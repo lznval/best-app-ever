@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { IProductState, IProductsData } from '@redux/types';
-import { getAllProduct, getOneProduct } from '@redux/asyncThunks/productThunk';
+import { getAllProduct } from '@redux/asyncThunks/productThunk';
 
 const initialState: IProductState = {
   data: [],

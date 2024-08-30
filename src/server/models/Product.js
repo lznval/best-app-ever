@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import { type } from 'os';
 
 const ProductSchema = new mongoose.Schema(
   {
@@ -33,6 +34,10 @@ const ProductSchema = new mongoose.Schema(
       required: true,
     },
     rating: Number,
+    description: {
+      type: String,
+      required: true
+    }
   },
   {
     timestamps: true,
