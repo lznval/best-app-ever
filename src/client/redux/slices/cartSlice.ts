@@ -1,13 +1,5 @@
-import { RootState } from '@redux/store';
 import { IProductsData } from '@redux/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-
-interface CartItem {
-  id: string;
-  title: string;
-  price: number;
-  quantity: number;
-}
 
 interface CartState {
   items: IProductsData[];

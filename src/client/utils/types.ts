@@ -27,7 +27,10 @@ export enum ERoutes {
   FAVORITES = '/favorites',
   CART = '/cart',
   USERS = '/users',
-  SELLER = '/seller',
   PRODUCTS = '/products',
   PRODUCT_DETAIL = '/product/:id'
+}
+
+export enum ERoutesSeller {
+  MAIN = '/seller'
 }
