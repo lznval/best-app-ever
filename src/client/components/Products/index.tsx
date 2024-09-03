@@ -11,9 +11,7 @@ export const Products = () => {
     products: { data, status },
   } = useSelector(state);
   useEffect(() => {
-    if (!data.length) {
-      dispatch(getAllProduct());
-    }
+    dispatch(getAllProduct());
   }, []);
 
   if (status === 'loading') {

@@ -30,7 +30,6 @@ const productSlice = createSlice({
         state.status = 'error';
         state.data = [];
       });
-    // Product getOne
   },
 });
 

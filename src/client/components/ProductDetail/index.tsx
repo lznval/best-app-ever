@@ -1,5 +1,4 @@
 import Loader from '@components/Loader';
-import { SLickSlider } from '@components/Slider';
 import { Button } from '@components/UI/Button';
 import { Tag } from '@components/UI/Tag';
 import { addItemToCart } from '@redux/slices/cartSlice';
@@ -9,6 +8,7 @@ import api from 'client/api';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import Slider from 'react-slick';
 
 export const ProductDetail = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -53,30 +53,36 @@ export const ProductDetail = () => {
     price,
     quantity,
   } = product;
-
+  const defaultSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white">
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Image Gallery */}
         <div className="lg:w-1/2 flex flex-col items-center">
-          <div className="w-full h-96 bg-gray-100 rounded-lg overflow-hidden">
-            <SLickSlider />
-            {/* <img
+        {photos.length > 1 ? (
+            <Slider {...defaultSettings} className='w-full'>
+              {photos.map((image: string) => (
+            <img
+              key={image}
               className="w-full h-full object-contain"
-              src={photos[0]}
+              src={`http://localhost:3005/uploads/${image}`}
               alt={title}
-            /> */}
-          </div>
-          {/* <div className="flex space-x-4 mt-4">
-            {photos.slice(1).map((image: string) => (
-              <img
-                key={image}
-                className="w-20 h-20 object-cover border rounded-lg cursor-pointer hover:border-gray-700"
-                src={image}
-                alt={title}
-              />
-            ))}
-          </div> */}
+            />
+          ))}
+            </Slider>
+          ) : (
+            <img
+              key={photos[0]}
+              className="w-full h-full object-contain"
+              src={`http://localhost:3005/uploads/${photos[0]}`}
+              alt={title}
+            />
+          )}
           {quantity === 0 && (
             <div className="absolute top-2 right-2 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-br-lg">
               Нет в наличии

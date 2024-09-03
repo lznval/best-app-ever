@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Button } from "@components/UI/Button";
+import api from "client/api";
 
 export const CreateProduct = () => {
   const dispatch = useDispatch();
@@ -8,10 +9,13 @@ export const CreateProduct = () => {
     title: "",
     text: "",
     categories: "",
-    photos: "",
     price: "",
     quantity: "",
   });
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
+
+  const [files, setFiles] = useState<File[]>([]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -21,21 +25,47 @@ export const CreateProduct = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setFiles(Array.from(e.target.files));
+    }
+  };
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const files = fileInputRef.current?.files;
+
     const productData = {
       ...formData,
       categories: formData.categories.split(",").map((category) => category.trim()),
-      photos: formData.photos.split(",").map((photo) => photo.trim()),
       price: parseFloat(formData.price),
       quantity: parseInt(formData.quantity, 10),
+      photos: files && Array.from(files).map(file => file.name)
     };
+
+    api.post('/products', productData);
+
+    const filesData = new FormData();
+
+    if (files) {
+      Array.from(files).forEach(file => filesData.append('images', file));
+      try {
+        const response = await api.post('/upload', filesData, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        });
+      } catch (error) {
+        console.error('Error uploading files:', error);
+      }
+    }
   };
+
+
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-6">Добавление товара</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">Название:</label>
           <input
@@ -71,11 +101,12 @@ export const CreateProduct = () => {
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">Фотографии (ссылки через запятую):</label>
           <input
-            type="text"
+            type="file"
             name="photos"
-            value={formData.photos}
-            onChange={handleInputChange}
+            multiple
+            onChange={handleFileChange}
             className="w-full px-3 py-2 border rounded"
+            ref={fileInputRef}
           />
         </div>
         <div className="mb-4">

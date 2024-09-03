@@ -48,9 +48,10 @@ app.use('/orders', ordersRoutes);
 app.use('/reviews', reviewsRoutes);
 app.use('/favorites', favoritesRoutes);
 
-app.post('/upload', checkAuth, upload.single('image'), (req, res) => {
+app.post('/upload', checkAuth, upload.array('images', 10), (req, res) => {
+  const files = req.files.map(file => `/uploads/${file.filename}`);
   res.json({
-    url: `/uploads/${req.file.originalname}`,
+    urls: files,
   });
 });
 

@@ -5,6 +5,7 @@ import { Tag } from '@components/UI/Tag';
 import { useDispatch } from 'react-redux';
 import { addItemToCart } from '@redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
 
 interface IProductCardProps {
   product: IProductsData;
@@ -13,25 +14,50 @@ interface IProductCardProps {
 export const ProductCard: FC<IProductCardProps> = ({ product }) => {
   const { _id, title, text, categories, photos, viewsCount, price, quantity } =
     product;
-
   const dispatch = useDispatch();
 
   const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     dispatch(addItemToCart({ ...product, quantity: 1 }));
   };
+  const defaultSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   return (
     <Link to={`/product/${_id}`}>
       <div className="max-w-sm rounded-lg overflow-hidden shadow-lg bg-white transition-transform transform hover:scale-105 hover:shadow-xl">
         <div className="relative">
-          {photos.map((image: string) => (
+          {photos.length > 1 ? (
+            <Slider {...defaultSettings}>
+              {photos.map((image: string) => (
             <img
               key={image}
               className="w-full h-48 object-cover"
-              src={image}
+              src={`http://localhost:3005/uploads/${image}`}
               alt={title}
             />
           ))}
+            </Slider>
+          ) : (
+            <img
+              key={photos[0]}
+              className="w-full h-48 object-cover"
+              src={`http://localhost:3005/uploads/${photos[0]}`}
+              alt={title}
+            />
+          )}
+          {/* {photos.map((image: string) => (
+            <img
+              key={image}
+              className="w-full h-48 object-cover"
+              src={`http://localhost:3005/uploads/${image}`}
+              alt={title}
+            />
+          ))} */}
           {quantity === 0 && (
             <div className="absolute top-0 left-0 bg-red-600 text-white text-xs font-bold px-2 py-1 rounded-br-lg">
               Out of Stock
