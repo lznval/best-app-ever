@@ -32,5 +32,5 @@ export enum ERoutes {
 
 export enum ERoutesSeller {
   MAIN = '/seller',
-  CREATE = '/create'
+  CREATE = '/create',
 }

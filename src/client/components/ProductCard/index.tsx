@@ -34,13 +34,13 @@ export const ProductCard: FC<IProductCardProps> = ({ product }) => {
           {photos.length > 1 ? (
             <Slider {...defaultSettings}>
               {photos.map((image: string) => (
-            <img
-              key={image}
-              className="w-full h-48 object-cover"
-              src={`http://localhost:3005/uploads/${image}`}
-              alt={title}
-            />
-          ))}
+                <img
+                  key={image}
+                  className="w-full h-48 object-cover"
+                  src={`http://localhost:3005/uploads/${image}`}
+                  alt={title}
+                />
+              ))}
             </Slider>
           ) : (
             <img

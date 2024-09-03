@@ -49,7 +49,7 @@ app.use('/reviews', reviewsRoutes);
 app.use('/favorites', favoritesRoutes);
 
 app.post('/upload', checkAuth, upload.array('images', 10), (req, res) => {
-  const files = req.files.map(file => `/uploads/${file.filename}`);
+  const files = req.files.map((file) => `/uploads/${file.filename}`);
   res.json({
     urls: files,
   });

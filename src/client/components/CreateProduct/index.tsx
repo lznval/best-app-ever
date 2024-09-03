@@ -1,23 +1,23 @@
-import { useRef, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Button } from "@components/UI/Button";
-import api from "client/api";
+import { useRef, useState } from 'react';
+import { Button } from '@components/UI/Button';
+import api from 'client/api';
 
 export const CreateProduct = () => {
-  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    title: "",
-    text: "",
-    categories: "",
-    price: "",
-    quantity: "",
+    title: '',
+    text: '',
+    categories: '',
+    price: '',
+    quantity: '',
   });
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   const [files, setFiles] = useState<File[]>([]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
@@ -36,10 +36,12 @@ export const CreateProduct = () => {
 
     const productData = {
       ...formData,
-      categories: formData.categories.split(",").map((category) => category.trim()),
+      categories: formData.categories
+        .split(',')
+        .map((category) => category.trim()),
       price: parseFloat(formData.price),
       quantity: parseInt(formData.quantity, 10),
-      photos: files && Array.from(files).map(file => file.name)
+      photos: files && Array.from(files).map((file) => file.name),
     };
 
     api.post('/products', productData);
@@ -47,7 +49,7 @@ export const CreateProduct = () => {
     const filesData = new FormData();
 
     if (files) {
-      Array.from(files).forEach(file => filesData.append('images', file));
+      Array.from(files).forEach((file) => filesData.append('images', file));
       try {
         const response = await api.post('/upload', filesData, {
           headers: {
@@ -60,14 +62,14 @@ export const CreateProduct = () => {
     }
   };
 
-
-
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-6">Добавление товара</h2>
       <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Название:</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Название:
+          </label>
           <input
             type="text"
             name="title"
@@ -78,7 +80,9 @@ export const CreateProduct = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Описание:</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Описание:
+          </label>
           <textarea
             name="text"
             value={formData.text}
@@ -88,7 +92,9 @@ export const CreateProduct = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Категории (через запятую):</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Категории (через запятую):
+          </label>
           <input
             type="text"
             name="categories"
@@ -99,7 +105,9 @@ export const CreateProduct = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Фотографии (ссылки через запятую):</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Фотографии (ссылки через запятую):
+          </label>
           <input
             type="file"
             name="photos"
@@ -110,7 +118,9 @@ export const CreateProduct = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Цена:</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Цена:
+          </label>
           <input
             type="number"
             name="price"
@@ -121,7 +131,9 @@ export const CreateProduct = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">Количество:</label>
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Количество:
+          </label>
           <input
             type="number"
             name="quantity"

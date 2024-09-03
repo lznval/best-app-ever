@@ -1,4 +1,5 @@
 import Loader from '@components/Loader';
+import { SlickSlider } from '@components/SlickSlider';
 import { Button } from '@components/UI/Button';
 import { Tag } from '@components/UI/Tag';
 import { addItemToCart } from '@redux/slices/cartSlice';
@@ -8,7 +9,6 @@ import api from 'client/api';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import Slider from 'react-slick';
 
 export const ProductDetail = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -44,15 +44,8 @@ export const ProductDetail = () => {
     return <div>Товар не найден</div>;
   }
 
-  const {
-    title,
-    text,
-    categories,
-    photos,
-    viewsCount,
-    price,
-    quantity,
-  } = product;
+  const { title, text, categories, photos, viewsCount, price, quantity } =
+    product;
   const defaultSettings = {
     dots: true,
     infinite: true,
@@ -64,17 +57,21 @@ export const ProductDetail = () => {
     <div className="max-w-5xl mx-auto p-6 bg-white">
       <div className="flex flex-col lg:flex-row gap-8">
         <div className="lg:w-1/2 flex flex-col items-center">
-        {photos.length > 1 ? (
-            <Slider {...defaultSettings} className='w-full'>
+          {photos.length > 1 ? (
+            <SlickSlider
+              settings={defaultSettings}
+              className="w-full"
+              // asNavFor={true}
+            >
               {photos.map((image: string) => (
-            <img
-              key={image}
-              className="w-full h-full object-contain"
-              src={`http://localhost:3005/uploads/${image}`}
-              alt={title}
-            />
-          ))}
-            </Slider>
+                <img
+                  key={image}
+                  className="w-full h-full object-contain"
+                  src={`http://localhost:3005/uploads/${image}`}
+                  alt={title}
+                />
+              ))}
+            </SlickSlider>
           ) : (
             <img
               key={photos[0]}

@@ -65,7 +65,7 @@ export const SellerAdmin = () => {
   return (
     <>
       <Link to={ERoutesSeller.CREATE}>
-        <Button label='На страницу создания товара' />
+        <Button label="На страницу создания товара" />
       </Link>
     </>
   );
