@@ -15,11 +15,13 @@ import { ProductDetailPage } from '@pages/usersPages/ProductDetail';
 import { ERoutes, ERoutesSeller } from '@types';
 import { SellerMainPage } from '@pages/seller/SellerMain';
 import { CreateProductPage } from '@pages/seller/CreateProduct';
+import { checkLoginSeller } from '@redux/asyncThunks/sellerThunk';
 
 export const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(checkLoginUser());
+    dispatch(checkLoginSeller())
   }, []);
   return (
     <Router>

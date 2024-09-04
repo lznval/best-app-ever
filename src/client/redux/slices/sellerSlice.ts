@@ -33,7 +33,7 @@ const sellerSlice = createSlice({
         (state, action: PayloadAction<IUserLoginData>) => {
           state.status = 'loaded';
           state.data = action.payload;
-          window.localStorage.setItem('token', state.data.token);
+          window.localStorage.setItem('token_seller', state.data.token);
         },
       )
       .addCase(loginSeller.rejected, (state) => {
@@ -62,7 +62,7 @@ const sellerSlice = createSlice({
       .addCase(registerSeller.fulfilled, (state, action) => {
         state.status = 'loaded';
         state.data = action.payload;
-        window.localStorage.setItem('token', state.data.token);
+        window.localStorage.setItem('token_seller', state.data.token);
       })
       .addCase(registerSeller.rejected, (state) => {
         state.status = 'error';

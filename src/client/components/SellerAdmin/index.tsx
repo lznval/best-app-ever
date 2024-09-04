@@ -57,7 +57,6 @@ export default AuthTabs;
 
 export const SellerAdmin = () => {
   const auth = useSelector(isSellerAuth);
-
   if (!auth) {
     return <AuthTabs />;
   }

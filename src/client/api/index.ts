@@ -11,6 +11,7 @@ const api: AxiosInstance = axios.create({
 
 api.interceptors.request.use((config) => {
   config.headers.Authorization = window.localStorage.getItem('token');
+  config.headers.Authorization = window.localStorage.getItem('token_seller');
   return config;
 });
 
