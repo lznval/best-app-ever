@@ -37,7 +37,7 @@ export const Header: FC = () => {
         <Link to={ERoutes.PRODUCTS}>Все товары</Link>
       </div>
       <div className={styles.search}>
-        <Input id="search" placeholder="Поиск" />
+        <Input id='search' placeholder='Поиск' />
       </div>
       <div className={styles.menu}>
         <Link to={ERoutes.FAVORITES}>

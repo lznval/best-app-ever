@@ -8,7 +8,7 @@ interface PageHeadProps {
 const PageHead: React.FC<PageHeadProps> = ({ title, description }) => (
   <Helmet>
     <title>PoopMarket - {title}</title>
-    {description && <meta name="description" content={description} />}
+    {description && <meta name='description' content={description} />}
   </Helmet>
 );
 

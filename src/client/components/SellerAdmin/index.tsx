@@ -15,8 +15,8 @@ const AuthTabs = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white shadow-lg rounded-lg">
-      <div className="flex justify-around mb-4">
+    <div className='max-w-md mx-auto p-4 bg-white shadow-lg rounded-lg'>
+      <div className='flex justify-around mb-4'>
         <button
           onClick={() => handleTabClick('login')}
           className={`py-2 px-4 rounded-t-lg transition-colors ${
@@ -38,7 +38,7 @@ const AuthTabs = () => {
           Регистрация
         </button>
       </div>
-      <div className="p-4 border rounded-b-lg">
+      <div className='p-4 border rounded-b-lg'>
         {activeTab === 'login' ? (
           <div>
             <AuthTabForm />
@@ -64,7 +64,7 @@ export const SellerAdmin = () => {
   return (
     <>
       <Link to={ERoutesSeller.CREATE}>
-        <Button label="На страницу создания товара" />
+        <Button label='На страницу создания товара' />
       </Link>
     </>
   );

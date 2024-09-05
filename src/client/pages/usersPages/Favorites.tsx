@@ -4,7 +4,7 @@ import PageHead from '@components/PageHead';
 export const FavoritesPage = () => {
   return (
     <>
-      <PageHead title="Избранное" />
+      <PageHead title='Избранное' />
       <Favorites />
     </>
   );

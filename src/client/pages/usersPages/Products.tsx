@@ -4,7 +4,7 @@ import { Products } from '@components/Products';
 export const ProductsPage = () => {
   return (
     <>
-      <PageHead title="Лучшие товары" />
+      <PageHead title='Лучшие товары' />
       <Products />
     </>
   );

@@ -21,7 +21,7 @@ export const App = () => {
   const dispatch = useDispatch<AppDispatch>();
   useEffect(() => {
     dispatch(checkLoginUser());
-    dispatch(checkLoginSeller())
+    dispatch(checkLoginSeller());
   }, []);
   return (
     <Router>
