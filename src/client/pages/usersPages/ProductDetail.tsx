@@ -5,7 +5,7 @@ import React from 'react';
 export const ProductDetailPage = () => {
   return (
     <>
-      <PageHead title='Страница продукта' />
+      <PageHead title="Страница продукта" />
       <ProductDetail />
     </>
   );

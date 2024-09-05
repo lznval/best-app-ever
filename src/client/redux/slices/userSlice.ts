@@ -1,9 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import {
-  loginUser,
-  checkLoginUser,
-  registerUser,
-} from '@redux/asyncThunks/userThunk';
+import { loginUser, checkLoginUser, registerUser } from '@redux/asyncThunks/userThunk';
 import { IAuthState, IUserLoginData } from '@redux/types';
 import { RootState } from '@redux/store';
 
@@ -28,14 +24,11 @@ const userSlice = createSlice({
         state.status = 'loading';
         state.data = null;
       })
-      .addCase(
-        loginUser.fulfilled,
-        (state, action: PayloadAction<IUserLoginData>) => {
-          state.status = 'loaded';
-          state.data = action.payload;
-          window.localStorage.setItem('token', state.data.token);
-        },
-      )
+      .addCase(loginUser.fulfilled, (state, action: PayloadAction<IUserLoginData>) => {
+        state.status = 'loaded';
+        state.data = action.payload;
+        window.localStorage.setItem('token', state.data.token);
+      })
       .addCase(loginUser.rejected, (state) => {
         state.status = 'error';
         state.data = null;

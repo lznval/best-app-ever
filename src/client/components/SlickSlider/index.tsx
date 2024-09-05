@@ -1,12 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Slider from 'react-slick';
 
-export const SlickSlider = ({
-  children,
-  settings,
-  className,
-  asNavFor,
-}: any) => {
+export const SlickSlider = ({ children, settings, className, asNavFor }: any) => {
   const [nav1, setNav1] = useState<Slider | null>(null);
   const [nav2, setNav2] = useState<Slider | null>(null);
   let sliderRef1 = useRef<Slider | null>(null);
@@ -19,12 +14,7 @@ export const SlickSlider = ({
 
   return (
     <>
-      <Slider
-        {...settings}
-        className={className}
-        ref={sliderRef1}
-        asNavFor={nav2}
-      >
+      <Slider {...settings} className={className} ref={sliderRef1} asNavFor={nav2}>
         {children}
       </Slider>
       {asNavFor && (

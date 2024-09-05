@@ -5,7 +5,7 @@ import React from 'react';
 export const SellerMainPage = () => {
   return (
     <>
-      <PageHead title='Админская панель' />
+      <PageHead title="Админская панель" />
       <SellerAdmin />
     </>
   );

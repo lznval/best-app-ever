@@ -4,7 +4,7 @@ import PageHead from '@components/PageHead';
 export const CartPage = () => {
   return (
     <>
-      <PageHead title='Корзина' />
+      <PageHead title="Корзина" />
       <Cart />
     </>
   );

@@ -10,13 +10,10 @@ export const loginUser = createAsyncThunk<IUserLoginData, ILoginParams>(
   },
 );
 
-export const checkLoginUser = createAsyncThunk(
-  'auth/checkLoginUser',
-  async () => {
-    const { data } = await api.get('/auth/me');
-    return data;
-  },
-);
+export const checkLoginUser = createAsyncThunk('auth/checkLoginUser', async () => {
+  const { data } = await api.get('/auth/me');
+  return data;
+});
 
 export const registerUser = createAsyncThunk<IUserLoginData, IRegisterParams>(
   'auth/registerUser',

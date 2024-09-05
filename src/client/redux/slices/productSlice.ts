@@ -19,13 +19,10 @@ const productSlice = createSlice({
         state.status = 'loading';
         state.data = [];
       })
-      .addCase(
-        getAllProduct.fulfilled,
-        (state, action: PayloadAction<IProductsData[]>) => {
-          state.status = 'loaded';
-          state.data = action.payload;
-        },
-      )
+      .addCase(getAllProduct.fulfilled, (state, action: PayloadAction<IProductsData[]>) => {
+        state.status = 'loaded';
+        state.data = action.payload;
+      })
       .addCase(getAllProduct.rejected, (state) => {
         state.status = 'error';
         state.data = [];

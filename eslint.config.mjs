@@ -21,13 +21,10 @@ export default [
     ],
     parser: '@typescript-eslint/parser',
     rules: {
-      'react/prop-types': 'off',
-      // Неиспользуемые переменные запрещены, но разрешены, если начинаются с подчеркивания
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
-      // Запрещать неявные `any` типы в TypeScript
-      // Иные правила...
-      'no-console': ['error', { allow: ['warn', 'error'] }],
       'prettier/prettier': ['warn', { endOfLine: 'auto' }],
+      'react/prop-types': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      'no-console': ['error', { allow: ['warn', 'error'] }],
     },
   },
 ];

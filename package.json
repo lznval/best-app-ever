@@ -31,7 +31,8 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build"
+    "build": "react-app-rewired build",
+    "format": "prettier --write \"src/client/**/*.{js,jsx,ts,tsx,json,css,md}\" \"src/server/**/*.{js,ts}\""
   },
   "browserslist": {
     "production": [

@@ -33,10 +33,7 @@ export const App = () => {
           <Route path={ERoutes.FAVORITES} element={<FavoritesPage />} />
           <Route path={ERoutes.CART} element={<CartPage />} />
           <Route path={ERoutes.PRODUCTS} element={<ProductsPage />} />
-          <Route
-            path={ERoutes.PRODUCT_DETAIL}
-            element={<ProductDetailPage />}
-          />
+          <Route path={ERoutes.PRODUCT_DETAIL} element={<ProductDetailPage />} />
           //Дальше страница для продавца
           <Route path={ERoutesSeller.MAIN} element={<SellerMainPage />} />
           <Route path={ERoutesSeller.CREATE} element={<CreateProductPage />} />
