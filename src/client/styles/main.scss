@@ -1,7 +1,60 @@
-@import "variables";
-@import "reset";
+@import 'variables';
+@import 'reset';
 
 html {
   font-size: $font-size-base;
   line-height: $line-height-base;
+}
+
+// Global styles (например, в styles.scss или аналогичном файле)
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex-grow {
+  flex-grow: 1;
+}
+
+// Specific layout styles
+.layout {
+  background-color: #f5f5f5; // Фон для всего layout
+}
+
+.layout-header {
+  background-color: #fff;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 20px;
+}
+
+.layout-main {
+  padding: 20px;
+  background-color: #fff;
+}
+
+.layout-footer {
+  background-color: #222;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
 }

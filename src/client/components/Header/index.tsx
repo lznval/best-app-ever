@@ -9,8 +9,13 @@ import { isAuth, logoutUser } from '@redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, state } from '@redux/store';
 import { ERoutes } from '@types';
+import cn from 'classnames';
 
-export const Header: FC = () => {
+interface IHeaderProps {
+  customStyle: string;
+}
+
+export const Header: FC<IHeaderProps> = ({ customStyle }) => {
   const dispatch = useDispatch<AppDispatch>();
   const { auth } = useSelector(state);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -26,7 +31,7 @@ export const Header: FC = () => {
   };
 
   return (
-    <header className={styles.wrapper}>
+    <header className={cn(customStyle, styles.wrapper)}>
       <Link to={ERoutes.MAIN} className={styles.logo}>
         PoopMarket
       </Link>

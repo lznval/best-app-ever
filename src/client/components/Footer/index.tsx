@@ -1,9 +1,15 @@
 import { ERoutesSeller } from '@types';
+import cn from 'classnames';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-export const Footer = () => {
+interface IFooterProps {
+  customStyle: string;
+}
+
+export const Footer: FC<IFooterProps> = ({ customStyle }) => {
   return (
-    <footer className="bg-gray-900 text-white py-8">
+    <footer className={cn(customStyle, 'bg-gray-900 text-white py-8')}>
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <div className="text-sm">
