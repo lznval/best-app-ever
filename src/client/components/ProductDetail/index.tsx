@@ -10,6 +10,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
 
+const URL = process.env.REACT_APP_LOCAL_URL;
+
 export const ProductDetail = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { id } = useParams<{ id: string }>();
@@ -66,7 +68,7 @@ export const ProductDetail = () => {
                 <img
                   key={image}
                   className="w-full h-full object-contain"
-                  src={`http://localhost:3005/uploads/${image}`}
+                  src={`${URL}uploads/${image}`}
                   alt={title}
                 />
               ))}
@@ -75,7 +77,7 @@ export const ProductDetail = () => {
             <img
               key={photos[0]}
               className="w-full h-full object-contain"
-              src={`http://localhost:3005/uploads/${photos[0]}`}
+              src={`${URL}uploads/${photos[0]}`}
               alt={title}
             />
           )}
