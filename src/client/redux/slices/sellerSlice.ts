@@ -14,7 +14,7 @@ const sellerSlice = createSlice({
   reducers: {
     logoutSeller: (state) => {
       state.data = null;
-      window.localStorage.removeItem('token');
+      window.localStorage.removeItem('token_seller');
     },
   },
   extraReducers: (builder) => {
