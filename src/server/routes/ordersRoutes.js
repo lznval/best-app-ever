@@ -9,7 +9,7 @@ router.post('/', checkAuth, handleValidationErrors, OrderController.createOrder)
 router.patch(
   '/:id',
   checkAuth,
-  productCreateValidation,
+  handleValidationErrors,
   handleValidationErrors,
   OrderController.updateOrderStatus,
 );
