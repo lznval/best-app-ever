@@ -6,5 +6,12 @@ const router = express.Router();
 
 router.get('/', checkAuth, handleValidationErrors, OrderController.getOrders);
 router.post('/', checkAuth, handleValidationErrors, OrderController.createOrder);
+router.patch(
+  '/:id',
+  checkAuth,
+  productCreateValidation,
+  handleValidationErrors,
+  OrderController.updateOrderStatus,
+);
 
 export default router;

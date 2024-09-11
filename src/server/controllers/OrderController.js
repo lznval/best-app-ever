@@ -52,3 +52,27 @@ export const createOrder = async (req, res) => {
     });
   }
 };
+
+export const updateOrderStatus = async (req, res) => {
+  try {
+    const orderId = req.params.id;
+
+    await OrderModel.updateOne(
+      {
+        _id: orderId,
+      },
+      {
+        status: req.body.status,
+      },
+    );
+
+    res.json({
+      success: true,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: 'Не удалось обновить заказ',
+    });
+  }
+};
