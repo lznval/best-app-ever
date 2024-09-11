@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from 'axios';
 
-const baseURL = 'http://localhost:3005';
+const baseURL = process.env.REACT_APP_LOCAL_URL;
 
 const api: AxiosInstance = axios.create({
   baseURL,
