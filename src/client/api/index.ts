@@ -10,8 +10,15 @@ const api: AxiosInstance = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-  config.headers.Authorization = window.localStorage.getItem('token');
-  config.headers.Authorization = window.localStorage.getItem('token_seller');
+  const token = window.localStorage.getItem('token');
+  const tokenSeller = window.localStorage.getItem('token_seller');
+
+  if (tokenSeller) {
+    config.headers.Authorization = `Bearer ${tokenSeller}`;
+  } else if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
   return config;
 });
 

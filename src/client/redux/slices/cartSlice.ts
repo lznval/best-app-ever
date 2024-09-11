@@ -14,7 +14,6 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItemToCart: (state, action: PayloadAction<IProductsData>) => {
-      console.log(action);
       const item = state.items.find((i) => i._id === action.payload._id);
       if (item) {
         item.quantity = action.payload.quantity;
