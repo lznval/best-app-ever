@@ -13,8 +13,6 @@ export const CreateProduct = () => {
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const [files, setFiles] = useState<File[]>([]);
-
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -23,11 +21,6 @@ export const CreateProduct = () => {
     });
   };
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
-      setFiles(Array.from(e.target.files));
-    }
-  };
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const files = fileInputRef.current?.files;
@@ -98,13 +91,12 @@ export const CreateProduct = () => {
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
-            Фотографии (ссылки через запятую):
+            Добавьте фотографии товара:
           </label>
           <input
             type="file"
             name="photos"
             multiple
-            onChange={handleFileChange}
             className="w-full px-3 py-2 border rounded"
             ref={fileInputRef}
           />

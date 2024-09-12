@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { RootState } from '@redux/store';
 import { IProductsData } from '@types';
-import { ERoutes } from 'client/utils/constants';
 
 interface IProductCardProps {
   product: IProductsData;
