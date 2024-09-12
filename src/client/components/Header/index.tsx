@@ -8,8 +8,8 @@ import { ProfileModal } from '@components/ProfileModal';
 import { isAuth, logoutUser } from '@redux/slices/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, state } from '@redux/store';
-import { ERoutes } from '@types';
 import cn from 'classnames';
+import { ERoutes } from 'client/utils/constants';
 
 interface IHeaderProps {
   customStyle: string;

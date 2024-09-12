@@ -1,19 +1,9 @@
 import { Button } from '@components/UI/Button';
 import { state } from '@redux/store';
-import { ICartProducts, IProductsData, TUser } from '@types';
+import { IOrder } from '@types';
 import api from 'client/api';
 import { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-
-interface IOrder {
-  _id: string;
-  user: TUser;
-  products: ICartProducts[];
-  status: string;
-  totalAmount: number;
-  createdAt: string;
-  updatedAt: string;
-}
 
 export const Cart = () => {
   const {
@@ -44,11 +34,11 @@ export const Cart = () => {
       setOrders(res.data);
     }
   };
-  console.log(orders, 'orders');
 
   useEffect(() => {
     handleGetOrders();
-  }, [items]);
+  }, []);
+
   return (
     <div>
       <h1>
@@ -74,7 +64,7 @@ export const Cart = () => {
           <div className="flex gap-2">
             {orders &&
               orders.map((order) => (
-                <div>
+                <div key={order._id}>
                   <div className="rounded border-2 border-sky-700 p-2">
                     {order.products.map((item) => (
                       <p key={item.product._id}>

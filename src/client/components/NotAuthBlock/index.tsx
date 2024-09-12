@@ -2,7 +2,7 @@ import { isAuth } from '@redux/slices/userSlice';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styles from './NotAuthBlock.module.scss';
-import { ERoutes } from '@types';
+import { ERoutes } from 'client/utils/constants';
 
 export const NotAuthBlock = () => {
   const authStatus = useSelector(isAuth);

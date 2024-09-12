@@ -12,10 +12,10 @@ import { FavoritesPage } from '@pages/usersPages/Favorites';
 import { CartPage } from '@pages/usersPages/Cart';
 import { ProductsPage } from '@pages/usersPages/Products';
 import { ProductDetailPage } from '@pages/usersPages/ProductDetail';
-import { ERoutes, ERoutesSeller } from '@types';
 import { SellerMainPage } from '@pages/seller/SellerMain';
 import { CreateProductPage } from '@pages/seller/CreateProduct';
 import { checkLoginSeller } from '@redux/asyncThunks/sellerThunk';
+import { ERoutes, ERoutesSeller } from './utils/constants';
 
 export const App = () => {
   const dispatch = useDispatch<AppDispatch>();

@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import { ERoutes } from '@types';
 import { Button } from '@components/UI/Button';
+import { ERoutes } from 'client/utils/constants';
 
 interface IProfileModal {
   isOpen: boolean;

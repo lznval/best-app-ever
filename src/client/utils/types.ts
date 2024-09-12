@@ -36,18 +36,12 @@ export interface ICartProducts {
   quantity: number;
 }
 
-export enum ERoutes {
-  MAIN = '/',
-  LOGIN = '/login',
-  REGISTER = '/register',
-  FAVORITES = '/favorites',
-  CART = '/cart',
-  USERS = '/users',
-  PRODUCTS = '/products',
-  PRODUCT_DETAIL = '/product/:id',
-}
-
-export enum ERoutesSeller {
-  MAIN = '/seller',
-  CREATE = '/create',
+export interface IOrder {
+  _id: string;
+  user: TUser;
+  products: ICartProducts[];
+  status: string;
+  totalAmount: number;
+  createdAt: string;
+  updatedAt: string;
 }

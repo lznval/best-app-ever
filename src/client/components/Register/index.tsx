@@ -4,8 +4,8 @@ import { AppDispatch } from '@redux/store';
 import { registerUser } from '@redux/asyncThunks/userThunk';
 import { Navigate } from 'react-router-dom';
 import { isAuth } from '@redux/slices/userSlice';
-import { ERoutes } from '@types';
 import { RegisterForm } from '@components/AuthForm/RegisterForm';
+import { ERoutes } from 'client/utils/constants';
 
 interface IRegisterData {
   email: string;

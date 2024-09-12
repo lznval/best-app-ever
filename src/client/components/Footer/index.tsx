@@ -1,5 +1,5 @@
-import { ERoutesSeller } from '@types';
 import cn from 'classnames';
+import { ERoutesSeller } from 'client/utils/constants';
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 

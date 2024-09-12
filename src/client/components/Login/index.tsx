@@ -4,8 +4,8 @@ import { AppDispatch } from '@redux/store';
 import { loginUser } from '@redux/asyncThunks/userThunk';
 import { Navigate } from 'react-router-dom';
 import { isAuth } from '@redux/slices/userSlice';
-import { ERoutes } from '@types';
 import { LoginForm } from '@components/AuthForm/LoginForm';
+import { ERoutes } from 'client/utils/constants';
 
 interface ILoginData {
   email: string;

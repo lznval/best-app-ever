@@ -5,9 +5,9 @@ import { RegisterTabForm } from './components/RegisterTabForm';
 import { AuthTabForm } from './components/AuthTabForm';
 import { Link } from 'react-router-dom';
 import { Button } from '@components/UI/Button';
-import { ERoutesSeller } from '@types';
 import { AppDispatch, state } from '@redux/store';
 import { ProductCard } from '@components/ProductCard';
+import { ERoutesSeller } from 'client/utils/constants';
 
 const AuthTabs = () => {
   const [activeTab, setActiveTab] = useState<'login' | 'register'>('login');
