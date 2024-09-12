@@ -31,14 +31,15 @@ export const getOrders = async (req, res) => {
 export const createOrder = async (req, res) => {
   try {
     const { products, totalAmount } = req.body;
-
     const doc = new OrderModel({
       user: req.body.user,
-      products: products.map((item) => ({
-        seller: item.seller,
-        product: item.product,
-        quantity: item.quantity,
-      })),
+      products: products.map((item) => {
+        return {
+          seller: item.seller,
+          product: item._id,
+          quantity: item.quantity,
+        };
+      }),
       totalAmount,
     });
 

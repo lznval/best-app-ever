@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { IProductsData } from '@types';
+// import { IProductsData } from '@types';
 import { Button } from '@components/UI/Button';
 import { Tag } from '@components/UI/Tag';
 import { useDispatch, useSelector } from 'react-redux';
@@ -7,6 +7,7 @@ import { addItemToCart, removeItemFromCart } from '@redux/slices/cartSlice';
 import { Link } from 'react-router-dom';
 import Slider from 'react-slick';
 import { RootState } from '@redux/store';
+import { IProductsData } from '@types';
 
 interface IProductCardProps {
   product: IProductsData;

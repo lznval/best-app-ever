@@ -1,5 +1,6 @@
-import { IProductsData } from '@redux/types';
+// import { IProductsData } from '@redux/types';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IProductsData } from '@types';
 
 interface CartState {
   items: IProductsData[];
