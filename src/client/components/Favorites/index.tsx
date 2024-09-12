@@ -1,6 +1,5 @@
 import Loader from '@components/Loader';
 import { NotAuthBlock } from '@components/NotAuthBlock';
-import { ProductCard } from '@components/ProductCard';
 import { getAllProduct } from '@redux/asyncThunks/productThunk';
 import { AppDispatch, RootState } from '@redux/store';
 import { useEffect } from 'react';
