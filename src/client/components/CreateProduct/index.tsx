@@ -1,8 +1,15 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Button } from '@components/UI/Button';
 import api from 'client/api';
+import { CategoryDropdown } from '@components/CategoriesDropdown';
+
+interface ICategoriesData {
+  _id: string;
+  title: string;
+}
 
 export const CreateProduct = () => {
+  const [categories, setCategories] = useState<ICategoriesData[]>([]);
   const [formData, setFormData] = useState({
     title: '',
     text: '',
@@ -51,6 +58,19 @@ export const CreateProduct = () => {
     }
   };
 
+  const getCategories = async () => {
+    const res = await api.get('/categories');
+    if (res.status === 200) {
+      setCategories(res.data);
+    }
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  console.log(categories);
+
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-lg">
       <h2 className="text-2xl font-bold mb-6">Добавление товара</h2>
@@ -80,14 +100,15 @@ export const CreateProduct = () => {
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Категории (через запятую):
           </label>
-          <input
+          <CategoryDropdown categories={categories} />
+          {/* <input
             type="text"
             name="categories"
             value={formData.categories}
             onChange={handleInputChange}
             className="w-full px-3 py-2 border rounded"
             required
-          />
+          /> */}
         </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
