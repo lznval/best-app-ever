@@ -1,6 +1,6 @@
 import CatalogMenu from '@components/CatalogMenu';
 import styles from './Header.module.scss';
-import { FC, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import { HeartIcon, OrdersIcon, CartIcon, UserIcon } from '@components/Icons';
 import { Link } from 'react-router-dom';
 import { Input } from '@components/UI/Input';
@@ -17,7 +17,10 @@ interface IHeaderProps {
 
 export const Header: FC<IHeaderProps> = ({ customStyle }) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { auth } = useSelector(state);
+  const {
+    auth,
+    cart: { items },
+  } = useSelector(state);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const isLogin = useSelector(isAuth);
 
@@ -29,6 +32,10 @@ export const Header: FC<IHeaderProps> = ({ customStyle }) => {
   const handleLogout = () => {
     dispatch(logoutUser());
   };
+
+  const countItemsCart = useMemo(() => {
+    return items.reduce((acc, current) => acc + current.quantity, 0);
+  }, [items]);
 
   return (
     <header className={cn(customStyle, styles.wrapper)}>
@@ -49,7 +56,12 @@ export const Header: FC<IHeaderProps> = ({ customStyle }) => {
           <HeartIcon />
         </Link>
         <OrdersIcon />
-        <Link to={ERoutes.CART}>
+        <Link to={ERoutes.CART} className="relative">
+          {items.length > 0 && (
+            <div className="flex items-center justify-center border absolute bg-white rounded-xl size-5 -right-3 -top-3 text-sm">
+              {countItemsCart}
+            </div>
+          )}
           <CartIcon />
         </Link>
       </div>

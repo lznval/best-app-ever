@@ -1,3 +1,4 @@
+import Loader from '@components/Loader';
 import PageHead from '@components/PageHead';
 
 export const HomePage = () => {
