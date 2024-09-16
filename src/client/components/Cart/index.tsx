@@ -1,9 +1,10 @@
 import { Button } from '@components/UI/Button';
-import { state } from '@redux/store';
+import { clearCart } from '@redux/slices/cartSlice';
+import { AppDispatch, state } from '@redux/store';
 import { IOrder } from '@types';
 import api from 'client/api';
 import { useEffect, useMemo, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 export const Cart = () => {
   const {
@@ -11,6 +12,7 @@ export const Cart = () => {
     auth: { data },
   } = useSelector(state);
   const [orders, setOrders] = useState<IOrder[] | null>(null);
+  const dispatch = useDispatch<AppDispatch>();
 
   const totalAmount = useMemo(() => {
     return items.reduce((acc, item) => acc + item.price, 0);
@@ -35,12 +37,21 @@ export const Cart = () => {
     }
   };
 
+  const clearCartItems = () => {
+    dispatch(clearCart());
+  };
+
   useEffect(() => {
     handleGetOrders();
   }, []);
 
   return (
-    <div>
+    <div className="relative">
+      <Button
+        onClick={clearCartItems}
+        customStyles="absolute right-5 top-5"
+        label="Очистить корзину"
+      />
       <h1>
         {items.length > 0
           ? `Количество товаров в вашей корзине: ${items.length}`

@@ -19,7 +19,7 @@ export const Button: FC<IButtonProps> = ({
   return (
     <button
       onClick={onClick && onClick}
-      className={`${colorClasses[color] || ''} text-white font-bold py-2 px-4 rounded transition w-full ${customStyles || ''} `}
+      className={`${colorClasses[color] || ''} text-white font-bold py-2 px-4 rounded transition ${customStyles || ''} `}
       type={type}
     >
       {label}
