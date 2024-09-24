@@ -1,4 +1,4 @@
-import PageHead from '@components/PageHead';
+import { PageHead } from '@components/PageHead';
 import { Register } from '@components/Register';
 
 export const RegisterPage = () => {

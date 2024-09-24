@@ -1,5 +1,5 @@
 import { Cart } from '@components/Cart';
-import PageHead from '@components/PageHead';
+import { PageHead } from '@components/PageHead';
 
 export const CartPage = () => {
   return (

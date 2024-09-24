@@ -1,4 +1,4 @@
-import PageHead from '@components/PageHead';
+import { PageHead } from '@components/PageHead';
 import { Products } from '@components/Products';
 
 export const ProductsPage = () => {
