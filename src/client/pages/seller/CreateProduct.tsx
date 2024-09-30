@@ -1,5 +1,5 @@
 import { CreateProduct } from '@components/CreateProduct';
-import PageHead from '@components/PageHead';
+import { PageHead } from '@components/PageHead';
 
 export const CreateProductPage = () => {
   return (

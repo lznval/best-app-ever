@@ -6,6 +6,7 @@ import { Navigate } from 'react-router-dom';
 import { isAuth } from '@redux/slices/userSlice';
 import { LoginForm } from '@components/AuthForm/LoginForm';
 import { ERoutes } from 'client/utils/constants';
+import { logoutSeller } from '@redux/slices/sellerSlice';
 
 interface ILoginData {
   email: string;
@@ -33,6 +34,7 @@ export const Login = () => {
 
   const handleLogin = () => {
     dispatch(loginUser(data));
+    dispatch(logoutSeller());
   };
 
   if (authStatus) {

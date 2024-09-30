@@ -1,5 +1,7 @@
 import { LoginForm } from '@components/AuthForm/LoginForm';
 import { loginSeller } from '@redux/asyncThunks/sellerThunk';
+import { loginUser } from '@redux/asyncThunks/userThunk';
+import { logoutUser } from '@redux/slices/userSlice';
 import { AppDispatch } from '@redux/store';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -27,6 +29,7 @@ export const AuthTabForm = () => {
 
   const handleLogin = () => {
     dispatch(loginSeller(data));
+    dispatch(logoutUser());
   };
   return (
     <LoginForm
